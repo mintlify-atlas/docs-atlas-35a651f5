@@ -1,0 +1,142 @@
+---
+title: Logging in
+description: Access your UniJAC account and neighborhood dashboard
+icon: right-to-bracket
+---
+
+## Overview
+
+Once you've created your account, you can log in to access your neighborhood dashboard, view reports, and participate in community activities.
+
+## Login Process
+
+<Steps>
+  <Step title="Navigate to the login page">
+    Click the **"Iniciar sesión"** (Log in) button in the header, or navigate directly using the hash route:
+    
+    ```javascript
+    // Navigate to login
+    window.location.hash = '#/login';
+    ```
+  </Step>
+  
+  <Step title="Enter your credentials">
+    Fill in your login information:
+    
+    ```html Login Form
+    <form action="" method="POST">
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" required/>
+      </div>
+    </form>
+    ```
+    
+    **Required fields:**
+    - **Email**: The email address you used during registration
+    - **Password**: Your account password
+  </Step>
+  
+  <Step title="Complete verification">
+    The login form includes security verification:
+    
+    ```html
+    <div class="h-captcha"></div>
+    ```
+    
+    Complete the CAPTCHA challenge to verify you're not a bot.
+  </Step>
+  
+  <Step title="Access your dashboard">
+    After successful login, you'll be redirected to the neighborhoods page:
+    
+    ```html
+    <a href="./pages/neighborhoods.html" class="next-step" type="submit">
+      Iniciar sesión
+    </a>
+    ```
+    
+    This takes you directly to your neighborhood dashboard where you can view reports, events, and community information.
+  </Step>
+</Steps>
+
+## What You Get Access To
+
+After logging in, you can:
+
+<CardGroup cols={2}>
+  <Card title="View Reports" icon="flag">
+    See all community reports in your neighborhood
+  </Card>
+  <Card title="Participate in Events" icon="calendar">
+    RSVP to community events and activities
+  </Card>
+  <Card title="Submit Reports" icon="pen-to-square">
+    Report issues with your verified account
+  </Card>
+  <Card title="Track Activity" icon="chart-line">
+    Monitor the status of your submitted reports
+  </Card>
+</CardGroup>
+
+## Need an Account?
+
+If you don't have an account yet:
+
+<Card title="Create your account" icon="user-plus" href="/guide/registration">
+  Follow the registration guide to set up your UniJAC account
+</Card>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Forgot your password?">
+    Currently, password recovery is handled through your neighborhood JAC administration. Contact your local JAC office for assistance resetting your password.
+  </Accordion>
+  
+  <Accordion title="Login not working?">
+    Common issues and solutions:
+    
+    - **Invalid credentials**: Double-check your email and password
+    - **CAPTCHA not loading**: Ensure JavaScript is enabled in your browser
+    - **Account not found**: Verify you completed the registration process
+    - **Browser compatibility**: Use a modern browser (Chrome, Firefox, Safari, Edge)
+  </Accordion>
+  
+  <Accordion title="Security verification failing?">
+    If the CAPTCHA verification is not working:
+    
+    - Try refreshing the page
+    - Clear your browser cache
+    - Disable browser extensions that might interfere with CAPTCHA
+    - Try a different browser or device
+  </Accordion>
+</AccordionGroup>
+
+## Security Tips
+
+<Note>
+  Keep your login credentials secure:
+  - Never share your password with anyone
+  - Use a strong, unique password
+  - Log out when using shared devices
+  - Be cautious of phishing attempts
+</Note>
+
+## Next Steps
+
+After logging in:
+
+<CardGroup cols={2}>
+  <Card title="Dashboard Navigation" icon="map" href="/guide/dashboard-navigation">
+    Learn how to navigate your neighborhood dashboard
+  </Card>
+  <Card title="Submit a Report" icon="flag" href="/guide/reporting-issues">
+    Report community issues and concerns
+  </Card>
+</CardGroup>

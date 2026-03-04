@@ -49,6 +49,7 @@
             "group": "User Guide",
             "pages": [
               "guide/registration",
+              "guide/login",
               "guide/reporting-issues",
               "guide/participating-events",
               "guide/dashboard-navigation"
@@ -86,6 +87,7 @@
           {
             "group": "Additional Information",
             "pages": [
+              "resources/about",
               "resources/ods-11",
               "resources/faq",
               "resources/contributing",
