@@ -1,0 +1,549 @@
+---
+title: "Dashboard Navigation"
+description: "Master the UniJAC dashboard interface, navigation patterns, and menu system"
+---
+
+The UniJAC dashboard is your central hub for neighborhood activity. This guide explains how to navigate the interface, use the menu system, and switch between different sections.
+
+## Dashboard Overview
+
+After logging in, you arrive at the **neighborhoods dashboard** (`/pages/neighborhoods.html`), which displays:
+
+- Your neighborhood name and summary statistics
+- Navigation sidebar with quick access to key sections
+- Recent community reports and activity
+- Upcoming events and important schedules
+- News and announcements
+
+## Main Layout Structure
+
+The dashboard uses a three-panel layout:
+
+```
+┌────────────────────────────────────────────────┐
+│  Header: Logo, Search, Theme Toggle           │
+├─────┬──────────────────────────────────┬──────┤
+│     │                                  │      │
+│ L   │  Main Content Area               │  R   │
+│ e   │  - Breadcrumbs                   │  i   │
+│ f   │  - Neighborhood Title            │  g   │
+│ t   │  - Report Summary Cards          │  h   │
+│     │  - Community Reports Feed        │  t   │
+│ S   │                                  │      │
+│ i   │                                  │  S   │
+│ d   │                                  │  i   │
+│ e   │                                  │  d   │
+│ b   │                                  │  e   │
+│ a   │                                  │  b   │
+│ r   │                                  │  a   │
+│     │                                  │  r   │
+└─────┴──────────────────────────────────┴──────┘
+```
+
+- **Left Sidebar**: Category navigation buttons
+- **Main Content**: Dynamic content based on current section
+- **Right Sidebar**: Schedules, events, news widgets (on desktop)
+
+## Header Navigation
+
+The header (`<header class="header">`) contains global navigation elements:
+
+### Logo
+
+The **UniJAC logo** appears in the header:
+
+```html
+<a href="./neighborhoods.html">
+  <svg class="logo" ...>
+    <!-- UniJAC logo SVG -->
+  </svg>
+</a>
+```
+
+Clicking the logo returns you to the main neighborhood dashboard from anywhere in the app.
+
+### Mobile Menu Button
+
+On mobile devices, a hamburger menu button appears:
+
+```html
+<button id="panelNav" type="button" class="menu-panel">
+  <svg><!-- Hamburger icon --></svg>
+  <span class="sr-only">Menu hamburguesa para moviles</span>
+</button>
+```
+
+**Behavior:**
+- Click to open the left sidebar navigation on mobile
+- The sidebar slides in from the left
+- Click outside the menu to close it
+- Controlled by JavaScript: `menuLeft.classList.add('is-open')`
+
+### Theme Toggle
+
+Switch between light and dark modes:
+
+```html
+<button id="btnTheme" class="toggle-theme">
+  <svg><!-- Sun/moon icon --></svg>
+  <span class="sr-only">Tema de navegacion</span>
+</button>
+```
+
+**Behavior:**
+- Click to toggle between light and dark themes
+- Sets `data-theme="dark"` on the `<html>` element
+- Preference persists across sessions (if localStorage implemented)
+- JavaScript: `html.setAttribute('data-theme', 'dark')`
+
+## Left Sidebar Navigation
+
+The left panel (`<aside id="menuLeft" class="aside-left">`) provides quick access to main sections.
+
+### Navigation Buttons
+
+Each button includes an icon and label:
+
+<CardGroup cols={2}>
+  <Card title="Inicio (Home)" icon="house">
+    **Icon**: House/home symbol
+    
+    **Destination**: Main dashboard overview
+    
+    **Shows**: Neighborhood summary, report counts, recent activity
+    
+    **Active by default**: Has `.active` class on page load
+  </Card>
+
+  <Card title="Eventos (Events)" icon="calendar">
+    **Icon**: Calendar symbol
+    
+    **Destination**: Events and activities page
+    
+    **Shows**: Community events, RSVP options, upcoming activities
+    
+    **Navigation**: Links to `eventsandactivities.html`
+  </Card>
+
+  <Card title="Daños (Damage)" icon="bolt">
+    **Icon**: Lightning bolt (infrastructure)
+    
+    **Destination**: Infrastructure damage reports
+    
+    **Shows**: Reported cases of broken infrastructure, status updates
+    
+    **Navigation**: Links to `infrastructure.html`
+  </Card>
+
+  <Card title="Extravíos (Lost Items)" icon="location-dot">
+    **Icon**: Location pin
+    
+    **Destination**: Lost persons and objects
+    
+    **Shows**: Missing persons, lost pets, found items
+    
+    **Navigation**: Links to `disorientation.html`
+  </Card>
+
+  <Card title="Puntos críticos (Critical Points)" icon="shield-halved">
+    **Icon**: Shield with safety symbol
+    
+    **Destination**: Sanitation and waste management
+    
+    **Shows**: Garbage issues, illegal dumping, critical sanitation points
+    
+    **Navigation**: Links to `sanitation.html`
+  </Card>
+</CardGroup>
+
+### Active State Indication
+
+The currently selected section is highlighted:
+
+```html
+<button class="btn-action active">
+  <svg>...</svg>
+  <span>Inicio</span>
+</button>
+```
+
+The `.active` class:
+- Changes button background color
+- Makes the icon and text more prominent
+- Provides visual feedback on current location
+
+### Mobile Sidebar Behavior
+
+On smaller screens:
+
+1. **Initially hidden**: Sidebar is off-screen by default
+2. **Hamburger opens menu**: Click `#panelNav` to reveal
+3. **Slides in**: Sidebar slides from left with `is-open` class
+4. **Click outside closes**: Tap anywhere outside to dismiss
+5. **Navigation closes menu**: Clicking a section auto-closes sidebar
+
+**JavaScript implementation:**
+
+```javascript
+// Open sidebar
+openPanel?.addEventListener('click', () => {
+    menuLeft?.classList.add('is-open');
+});
+
+// Close when clicking outside
+document.addEventListener('click', (e) => {
+    if (menuLeft && !menuLeft.contains(e.target) 
+        && !openPanel?.contains(e.target)) {
+        menuLeft.classList.remove('is-open');
+    }
+});
+```
+
+## Breadcrumb Navigation
+
+Breadcrumbs appear below the header in the main content area:
+
+```html
+<nav class="breadcrumb" aria-label="Ruta de navegación">
+  <svg><!-- Grid icon --></svg>
+  <ol>
+    <li><a href="../index.html">Página principal</a></li>
+    <li aria-current="page"><a href="#">Barrio</a></li>
+  </ol>
+</nav>
+```
+
+### Breadcrumb Structure
+
+Breadcrumbs show your navigation path:
+
+- **Level 1**: Página principal (Homepage)
+- **Level 2**: Barrio (Neighborhood) or current section
+- **Level 3**: Specific category (e.g., "Daños de infraestructura")
+
+**Example paths:**
+
+```
+Página principal > Barrio
+Página principal > Barrio > Daños de infraestructura
+Página principal > Barrio > Eventos y actividades
+```
+
+### Accessibility Features
+
+- `aria-label="Ruta de navegación"`: Announces breadcrumb purpose
+- `aria-current="page"`: Indicates current location
+- Semantic `<nav>` and `<ol>` elements
+- Screen reader friendly
+
+## Top Navigation Menu
+
+Pages like `infrastructure.html` include a top navigation bar:
+
+```html
+<nav aria-label="Navegación principal">
+  <ul>
+    <li><strong>UniJAC</strong></li>
+    <li><a href="./eventsandactivities.html">Eventos y actividades</a></li>
+    <li><a href="./infrastructure.html">Daños de infraestructura</a></li>
+    <li><a href="#">Seguridad y convivencia</a></li>
+    <li><a href="./disorientation.html">Desorientación y objetos</a></li>
+    <li><a href="./sanitation.html">Aseo, basuras y puntos críticos</a></li>
+  </ul>
+</nav>
+```
+
+This provides an alternative way to switch between main categories, especially useful on larger screens.
+
+## Switching Between Report Categories
+
+You can navigate between different report types using multiple methods:
+
+<Steps>
+  <Step title="Using Left Sidebar Buttons">
+    **Best for**: Quick navigation on any screen size
+    
+    1. Locate the sidebar (on desktop) or open via hamburger menu (mobile)
+    2. Click the icon button for your desired category
+    3. The page navigates to that section
+    4. The button shows `.active` state
+  </Step>
+
+  <Step title="Using Top Navigation Links">
+    **Best for**: Desktop users, full category names visible
+    
+    1. Look at the horizontal navigation in the header
+    2. Click the text link for the category you want
+    3. Page navigates to that section
+  </Step>
+
+  <Step title="Via Dashboard Cards">
+    **Best for**: Seeing counts before navigating
+    
+    The dashboard summary shows report counts:
+    
+    ```
+    Resumen de reportes
+    ┌─────────────┐
+    │ Eventos   4 │ ← Click to see events
+    │ Daños     6 │ ← Click to see damage reports
+    │ Extravíos 2 │ ← Click to see lost items
+    │ Aseo     11 │ ← Click to see sanitation issues
+    └─────────────┘
+    ```
+    
+    Some implementations make these cards clickable links.
+  </Step>
+
+  <Step title="Through Breadcrumbs">
+    **Best for**: Moving back up the hierarchy
+    
+    Click any level in the breadcrumb:
+    - "Página principal" → Return to homepage
+    - "Barrio" → Return to neighborhood dashboard
+  </Step>
+</Steps>
+
+## Main Content Sections
+
+### Neighborhood Title
+
+```html
+<h1 id="page-title" class="title-neighborhood">
+  El Minuto de Dios
+</h1>
+```
+
+Displays your selected neighborhood name prominently. This is set during:
+- Initial registration (locality + neighborhood selection)
+- First-time dashboard visit (welcome modal)
+
+### Report Summary Cards
+
+```html
+<div class="cards" role="region" aria-label="Indicadores">
+  <article class="card">
+    <p>Eventos</p>
+    <span class="badge">4</span>
+  </article>
+  <!-- More cards... -->
+</div>
+```
+
+Provides at-a-glance statistics:
+- **Eventos**: Number of upcoming events
+- **Daños**: Active damage reports
+- **Extravíos**: Lost items/persons
+- **Aseo**: Sanitation issues
+
+### Community Reports Feed
+
+Scrollable feed of recent reports with:
+- Report title
+- Date submitted
+- Reporter name (or "Vecino anónimo")
+- Category badge
+- Brief description
+- "Ver reporte" link
+
+### Filter Controls
+
+Reports section includes filtering:
+
+```html
+<select id="filtro" name="filtro">
+  <option value="30">Últimos 30 días</option>
+  <option value="60">Últimos 60 días</option>
+</select>
+```
+
+Filter reports by time period to focus on recent or historical data.
+
+## Right Sidebar Widgets
+
+The right sidebar (`<aside aria-label="Información complementaria">`) contains helpful information:
+
+### Important Schedules
+
+```html
+<section aria-labelledby="horarios">
+  <h3>Horarios importantes</h3>
+  <p><strong>Recolección de basura</strong></p>
+  <ul>
+    <li>Lunes</li>
+    <li>Miércoles</li>
+    <li>Jueves</li>
+  </ul>
+  <p>Hora aproximada: 8:00 – 9:00 PM</p>
+</section>
+```
+
+Shows recurring schedules like garbage collection days and times.
+
+### Events Preview
+
+```html
+<section aria-labelledby="eventos">
+  <h2>Eventos y actividades disponibles</h2>
+  <article class="card">
+    <h4>Rumba terapia</h4>
+    <p>Alcaldía del barrio</p>
+    <p><time>14/03/2026 – 7:00 AM</time></p>
+  </article>
+  <a href="#">Ver más</a>
+</section>
+```
+
+Quick preview of the next upcoming event with link to full events page.
+
+### News and Updates
+
+```html
+<section aria-labelledby="noticias">
+  <h3>Noticias y novedades del sector</h3>
+  <p>No hay novedades recientes.</p>
+</section>
+```
+
+Displays neighborhood announcements and news when available.
+
+## Welcome Modal
+
+On first visit to the dashboard, a modal appears:
+
+```html
+<div id="welcomeModal" class="modal-welcome" 
+     role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <h2>¡Te damos la bienvenida! 🎉</h2>
+    <p>Antes de continuar, necesitamos encontrar tu barrio.</p>
+    <input id="buscar-barrio" type="search" 
+           placeholder="Escribe tu barrio">
+    <button id="continueBtn">Continuar</button>
+  </div>
+</div>
+```
+
+### Modal Behavior
+
+1. **Auto-appears**: Shown 1ms after page load via `setTimeout`
+2. **Overlay**: Background darkens with `.overlay.active`
+3. **Search field**: Type to find your neighborhood
+4. **Datalist**: Autocomplete suggestions from `#barriosList`
+5. **Continue button**: Closes modal, sets neighborhood preference
+6. **JavaScript**: `welcomeModal.classList.remove('active')`
+
+## Keyboard Navigation
+
+The dashboard is fully keyboard accessible:
+
+| Key | Action |
+|-----|--------|
+| **Tab** | Move forward through interactive elements |
+| **Shift+Tab** | Move backward through elements |
+| **Enter** / **Space** | Activate buttons and links |
+| **Escape** | Close modals or overlays |
+| **Arrow keys** | Navigate within dropdowns and menus |
+
+<Info>
+  All interactive elements have visible focus indicators for keyboard users.
+</Info>
+
+## Responsive Behavior
+
+### Desktop (>1024px)
+
+- Left sidebar always visible
+- Right sidebar displays alongside main content
+- Top navigation fully expanded
+- Three-column layout
+
+### Tablet (768px - 1024px)
+
+- Left sidebar collapsible
+- Right sidebar may stack below main content
+- Two-column layout
+
+### Mobile (under 768px)
+
+- Left sidebar hidden, accessed via hamburger menu
+- Right sidebar stacks below main content
+- Single-column layout
+- Touch-optimized button sizes
+
+## Navigation Patterns from Source Code
+
+### Hash-based Routing (index.html)
+
+The homepage uses hash routing:
+
+```javascript
+switch (route) {
+    case "#/home": loadView(homeHTML); break;
+    case "#/login": loadView("pages/login.html"); break;
+    case "#/register": loadView("pages/register.html"); break;
+    // ...
+}
+```
+
+Routes:
+- `#/home` - Homepage
+- `#/login` - Login page
+- `#/about` - About page
+- `#/contact` - Contact page
+- `#/register` - Registration form
+
+### Direct Page Navigation (dashboard)
+
+The dashboard uses direct HTML page navigation:
+
+```html
+<a href="./eventsandactivities.html">Eventos</a>
+<a href="./infrastructure.html">Daños de infraestructura</a>
+<a href="./disorientation.html">Desorientación</a>
+```
+
+Each link loads a complete new page rather than using hash routing.
+
+## Tips for Efficient Navigation
+
+<AccordionGroup>
+  <Accordion title="Bookmark Your Neighborhood">
+    Once you've selected your neighborhood via the welcome modal, bookmark the dashboard page for quick access.
+  </Accordion>
+
+  <Accordion title="Use Keyboard Shortcuts">
+    Learn keyboard navigation patterns (Tab, Enter, Escape) to navigate faster without a mouse.
+  </Accordion>
+
+  <Accordion title="Check Breadcrumbs">
+    If you're lost, look at the breadcrumbs to see where you are and navigate back.
+  </Accordion>
+
+  <Accordion title="Mobile Menu Auto-Closes">
+    On mobile, the sidebar automatically closes when you click outside it - no need to find a close button.
+  </Accordion>
+
+  <Accordion title="Logo = Home">
+    Click the UniJAC logo anytime to return to your neighborhood dashboard.
+  </Accordion>
+</AccordionGroup>
+
+## Accessibility Features
+
+The navigation system includes:
+
+- **Semantic landmarks**: `<nav>`, `<aside>`, `<main>`, `<header>`
+- **ARIA labels**: Clear descriptions for screen readers
+- **Focus management**: Logical tab order through elements
+- **Skip links**: (Can be added) Jump to main content
+- **Screen reader text**: `.sr-only` class for descriptive labels
+- **Role attributes**: `role="dialog"`, `role="region"`, etc.
+
+## Next Steps
+
+Now that you understand navigation:
+
+- [Create your account](/guide/registration) to access the dashboard
+- [Report neighborhood issues](/guide/reporting-issues) using the navigation
+- [Find and RSVP to events](/guide/participating-events) from the Events section

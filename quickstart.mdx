@@ -1,80 +1,374 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: Quickstart guide
+description: Get started with UniJAC in minutes - from account creation to your first community action
 ---
 
-## Get started in three steps
+This guide will walk you through creating your UniJAC account and help you get to your first meaningful action in the platform.
 
-Get your documentation site running locally and make your first customization.
+## Prerequisites
 
-### Step 1: Set up your local environment
+Before you begin, make sure you have:
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
+- A modern web browser (Chrome, Firefox, Safari, or Edge)
+- Your neighborhood information (localidad and barrio in Bogotá)
+- An email address for account registration
+
+## Step 1: Create your account
+
+UniJAC uses a two-step registration process to ensure you're connected to the right neighborhood community.
+
+<Steps>
+  <Step title="Navigate to registration">
+    Visit the UniJAC platform and click the "Registrarse" button in the header, or navigate directly to the registration page using the hash route:
     
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
+    ```javascript
+    window.location.hash = '#/register';
+    ```
     
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
+    The platform uses hash-based routing handled by the routes.js file:
     
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
+    ```javascript
+    case "#/register":
+      await loadView("pages/register.html");
+      if (typeof initRegister === "function") initRegister();
+      break;
+    ```
+  </Step>
+  
+  <Step title="Complete Step 1 - Location and basic info">
+    Fill in your neighborhood details and personal information:
+    
+    - **Localidad**: Select your locality from the dropdown
+    - **Barrio**: Select your specific neighborhood (enabled after selecting localidad)
+    - **Nombre**: Enter your first name
+    - **Apellido**: Enter your last name
+    
+    <CodeGroup>
+    ```html Step 1 Form Fields
+    <div class="form-group">
+      <label for="localidad">Localidad</label>
+      <select name="localidad" id="localidad" aria-live="polite" required>
+        <option selected disabled hidden>Selecciona localidad</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="barrios">Barrio</label>
+      <select name="barrios" id="barrios" aria-live="polite" required disabled>
+        <option selected disabled hidden>Selecciona barrio</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" name="nombre" id="nombre" required />
+    </div>
+
+    <div class="form-group">
+      <label for="apellido">Apellido</label>
+      <input type="text" name="apellido" id="apellido" required />
+    </div>
+    ```
+    </CodeGroup>
+    
+    <Info>
+      By continuing, you accept the use of cookies and privacy policy for UniJAC account creation.
+    </Info>
+    
+    Click "Continuar" to proceed to Step 2.
+  </Step>
+  
+  <Step title="Complete Step 2 - Account credentials">
+    Set up your login credentials:
+    
+    - **Correo electrónico**: Enter your email address
+    - **Contraseña**: Create a secure password
+    
+    ```html
+    <div class="form-group">
+      <label for="correo">Correo electrónico</label>
+      <input type="email" name="correo" id="correo" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" id="password" required />
+    </div>
+    ```
+    
+    Click "Crear cuenta" to complete registration.
+  </Step>
+</Steps>
+
+<Note>
+  The registration form shows "Paso 1 de 2" and "Paso 2 de 2" to help you track your progress through the signup process.
+</Note>
+
+## Step 2: Select your neighborhood
+
+After creating your account, you'll see a welcome modal to confirm your neighborhood selection.
+
+<Steps>
+  <Step title="Welcome modal appears">
+    When you first access the neighborhoods dashboard, you'll see a welcome message:
+    
+    ```html
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="title-modal">¡Te damos la bienvenida! 🎉</h2>
+      </div>
+      <div class="modal-body">
+        <p>Antes de continuar, necesitamos encontrar tu barrio.</p>
+      </div>
+    </div>
+    ```
+  </Step>
+  
+  <Step title="Search for your barrio">
+    Use the search input to find and select your neighborhood:
+    
+    ```html
+    <input
+      id="buscar-barrio"
+      type="search"
+      autocomplete="off"
+      placeholder="Escribe tu barrio"
+      list="barrios-lista"
+      class="input-search"
+    />
+    ```
+    
+    The datalist provides autocomplete suggestions as you type.
+  </Step>
+  
+  <Step title="Confirm and continue">
+    Click the "Continuar" button to access your neighborhood dashboard.
+  </Step>
+</Steps>
+
+## Step 3: View your neighborhood dashboard
+
+You're now on your personalized neighborhood dashboard. Here's what you'll see:
+
+### Dashboard overview
+
+The main dashboard displays:
+
+```html
+<section class="summary-reports">
+  <header class="content-title">
+    <h1 class="title-neighborhood">El Minuto de Dios</h1>
+  </header>
+  
+  <div class="content-cards">
+    <h2 class="title-summary">Resumen de reportes</h2>
+    <div class="cards">
+      <article class="card">
+        <p>Eventos</p>
+        <span class="badge">4</span>
+      </article>
+      <article class="card">
+        <p>Daños</p>
+        <span class="badge">6</span>
+      </article>
+      <article class="card">
+        <p>Extravíos</p>
+        <span class="badge">2</span>
+      </article>
+      <article class="card">
+        <p>Aseo</p>
+        <span class="badge">11</span>
+      </article>
+    </div>
+  </div>
+</section>
+```
+
+### Navigation sidebar
+
+The left sidebar provides quick access to different sections:
+
+- **Inicio**: Your neighborhood home dashboard
+- **Eventos**: Community events and activities
+- **Daños**: Infrastructure damage reports
+- **Extravíos**: Lost and found items
+- **Puntos críticos**: Critical safety points in your area
+
+### Important schedules
+
+View important neighborhood schedules like garbage collection:
+
+```html
+<section class="info-garbage">
+  <h2 class="garbage-title">Recolección de basura</h2>
+  <div class="week-garbage">
+    <ul>
+      <li>Lun</li>
+      <li>Mie</li>
+      <li>Vie</li>
+    </ul>
+    <time datetime="19:00">7:00 PM</time>
+  </div>
+</section>
+```
+
+## Step 4: Make your first action
+
+Now that you're familiar with the dashboard, choose your first action:
+
+<Accordion title="View an upcoming event">
+  Navigate to the "Eventos y actividades disponibles" section on your dashboard:
+  
+  ```html
+  <section class="info-events">
+    <h3>Eventos y actividades disponibles</h3>
+    <article class="card">
+      <h4>Rumba terapia</h4>
+      <p>Alcaldía del barrio</p>
+      <p>
+        <time datetime="2026-03-14T07:00">14/03/2026 – 7:00 AM</time>
+      </p>
+    </article>
+    <a href="#">Ver más</a>
+  </section>
+  ```
+  
+  Click on any event to view full details and register your attendance.
 </Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
+<Accordion title="Browse community reports">
+  Scroll down to the "Reportes de la comunidad" section to see what your neighbors are reporting:
+  
+  ```html
+  <section class="reports">
+    <header>
+      <h2>Reportes de la comunidad</h2>
+      <form>
+        <select id="filtro" name="filtro">
+          <option value="30">Últimos 30 días</option>
+          <option value="60">Últimos 60 días</option>
+        </select>
+      </form>
+    </header>
+    
+    <article class="card">
+      <div class="header-card">
+        <h3>Poste de luz no está funcionando</h3>
+        <p class="time-card">
+          <time datetime="2026-01-31">Reportado el 31 de enero de 2026</time>
+        </p>
+      </div>
+      <!-- Report details -->
+    </article>
+  </section>
+  ```
+  
+  Use the filter dropdown to view reports from the last 30 or 60 days.
 </Accordion>
+
+<Accordion title="Check neighborhood news">
+  Stay updated with the latest news from your community:
+  
+  ```html
+  <section class="info-news">
+    <h3>Noticias y novedades del sector</h3>
+    <p>No hay novedades recientes.</p>
+  </section>
+  ```
+  
+  When news is available, it will appear in this section with full details.
+</Accordion>
+
+## Navigation patterns
+
+UniJAC uses hash-based routing for seamless navigation. Understanding this pattern helps you navigate the platform:
+
+```javascript
+// Home page
+window.location.hash = '#/home';
+
+// Registration
+window.location.hash = '#/register';
+
+// Login
+window.location.hash = '#/login';
+
+// About page
+window.location.hash = '#/about';
+
+// Contact
+window.location.hash = '#/contact';
+```
+
+The routing system automatically handles page transitions:
+
+```javascript
+async function hashRoutes() {
+  window.scrollTo(0, 0);
+  const route = location.hash || "#/home";
+  const isHome = route === "#/" || route === "#/home";
+  
+  // Header styling adjusts based on route
+  if (header) header.classList.toggle("light-theme", !isHome);
+  
+  // Register button visibility
+  if (btnRegister) {
+    btnRegister.style.display = route === "#/register" ? "none" : "flex";
+  }
+  
+  // Route handling
+  switch (route) {
+    case "#/home":
+      if (main) main.innerHTML = homeHTML;
+      initHome();
+      break;
+    case "#/register":
+      await loadView("pages/register.html");
+      if (typeof initRegister === "function") initRegister();
+      break;
+    // ... other routes
+  }
+}
+
+window.addEventListener("hashchange", hashRoutes);
+```
+
+<Tip>
+  The platform automatically scrolls to the top of the page on route changes for a better user experience.
+</Tip>
+
+## Accessibility features
+
+UniJAC includes built-in accessibility controls. Click the accessibility button (♿) in the bottom right to access:
+
+- **Aumentar fuente**: Increase font size
+- **Reducir fuente**: Decrease font size
+- **Contraste**: Toggle high contrast mode
+
+These features help ensure the platform is usable for everyone in your community.
 
 ## Next steps
 
-Now that you have your docs running, explore these key features:
+Now that you're set up, explore these features:
 
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card title="Create a report" icon="flag" href="/guide/reporting-issues">
+    Learn how to report issues in your neighborhood
+  </Card>
+  
+  <Card title="Manage events" icon="calendar" href="/features/events-activities">
+    Discover and participate in community events
+  </Card>
+  
+  <Card title="Dashboard features" icon="chart-line" href="/features/neighborhood-dashboard">
+    Explore all dashboard capabilities
+  </Card>
+  
+  <Card title="Mobile access" icon="mobile" href="/installation">
+    Access UniJAC on your mobile device
+  </Card>
 </CardGroup>
 
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>
+<Warning>
+  Remember to verify your email address to receive notifications about events and updates in your neighborhood.
+</Warning>

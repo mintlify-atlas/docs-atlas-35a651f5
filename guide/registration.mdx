@@ -1,0 +1,178 @@
+---
+title: "Creating Your Account"
+description: "Step-by-step guide to registering on UniJAC and joining your neighborhood community"
+---
+
+This guide walks you through creating your UniJAC account, from selecting your locality and neighborhood to setting up your credentials.
+
+## Overview
+
+UniJAC uses a two-step registration process to ensure you're connected to the right neighborhood community in Bogotá. The registration form collects your location information first, then your account credentials.
+
+## Before You Begin
+
+To complete registration, you'll need:
+
+- The name of your **Localidad** (locality) in Bogotá
+- The name of your **Barrio** (neighborhood)
+- A valid email address
+- Your first and last name
+
+## Registration Process
+
+<Steps>
+  <Step title="Navigate to Registration">
+    From the UniJAC homepage, click the **"Crear cuenta"** (Create account) button or navigate to the registration page.
+    
+    You'll see the form header showing **"Paso 1 de 2"** (Step 1 of 2), indicating this is a multi-step process.
+  </Step>
+
+  <Step title="Select Your Localidad">
+    In the first dropdown field labeled **"Localidad"**, select your locality from the list.
+    
+    <Info>
+      The localities are loaded dynamically from Bogotá's official cadastral database. If the dropdown shows "Cargando localidades..." (Loading localities...), wait a moment for the data to load.
+    </Info>
+    
+    The dropdown contains all 20 localities of Bogotá, sorted alphabetically. Click to open the dropdown and select your locality.
+  </Step>
+
+  <Step title="Select Your Barrio">
+    Once you select a locality, the **"Barrio"** (Neighborhood) dropdown becomes enabled.
+    
+    This dropdown is initially disabled (grayed out) and will only activate after you select a locality. The neighborhoods shown are filtered based on your selected locality.
+    
+    <Note>
+      If you see "Cargando barrios..." (Loading neighborhoods...), the system is fetching the neighborhoods for your locality. This usually takes just a moment.
+    </Note>
+    
+    Select your neighborhood from the filtered list. Neighborhoods are also sorted alphabetically for easy navigation.
+  </Step>
+
+  <Step title="Enter Your Name">
+    Fill in the following required fields:
+    
+    - **Nombre** (First name): Enter your first name
+    - **Apellido** (Last name): Enter your last name
+    
+    Both fields are required and marked with the `required` attribute.
+  </Step>
+
+  <Step title="Accept Terms and Continue">
+    Before continuing, note the terms statement:
+    
+    > "Al continuar, aceptas el uso de cookies y la política de privacidad al proyecto UniJAC para crear una cuenta."
+    > 
+    > (By continuing, you accept the use of cookies and the privacy policy of the UniJAC project to create an account.)
+    
+    Click the **"Continuar"** (Continue) button to proceed to step 2.
+    
+    <Tip>
+      If you already have an account, you can click **"Iniciar sesión"** (Log in) below the Continue button to go to the login page instead.
+    </Tip>
+  </Step>
+
+  <Step title="Enter Email and Password">
+    The form header now shows **"Paso 2 de 2"** (Step 2 of 2).
+    
+    Fill in your account credentials:
+    
+    - **Correo electrónico** (Email): Enter a valid email address
+    - **Contraseña** (Password): Create a secure password
+    
+    Both fields are required. The email field uses HTML5 email validation to ensure proper format.
+    
+    <Warning>
+      Choose a strong password to protect your account. UniJAC stores community reports and personal information.
+    </Warning>
+  </Step>
+
+  <Step title="Create Account">
+    Click the **"Crear cuenta"** (Create account) button to complete registration.
+    
+    Upon successful registration, you'll be redirected to the dashboard summary page where you can start exploring your neighborhood's activity.
+  </Step>
+</Steps>
+
+## Field Validation
+
+All form fields include validation:
+
+| Field | Validation | Notes |
+|-------|------------|-------|
+| Localidad | Required, must select from dropdown | Populated from Bogotá cadastral API |
+| Barrio | Required, must select from dropdown | Filtered based on selected Localidad |
+| Nombre | Required text field | Your first name |
+| Apellido | Required text field | Your last name |
+| Correo electrónico | Required, valid email format | Used for login and notifications |
+| Contraseña | Required text field | Stored securely |
+
+## Navigating Between Steps
+
+The registration form includes navigation controls:
+
+- **Back button**: In step 1, a back arrow button appears in the header to return to the previous page
+- **Continuar button**: Advances from step 1 to step 2
+- **Step indicator**: Shows current progress ("Paso 1 de 2" or "Paso 2 de 2")
+
+<Note>
+  The form uses `fieldset` elements with `aria-label` attributes for accessibility, making it screen-reader friendly.
+</Note>
+
+## After Registration
+
+Once you complete registration:
+
+1. **Automatic login**: You're automatically logged into your new account
+2. **Dashboard redirect**: You're taken to `/pages/dashboard/summary.html`
+3. **Neighborhood selection**: On first visit, a welcome modal prompts you to confirm or search for your neighborhood
+4. **Ready to participate**: You can now view reports, RSVP to events, and submit your own reports
+
+## Troubleshooting
+
+### "Error cargando localidades" appears
+
+This means the API request to fetch localities failed. Check your internet connection and refresh the page.
+
+### "Error cargando barrios" appears
+
+The neighborhoods API failed to load. Try selecting a different locality or refresh the page.
+
+### Dropdown fields are disabled
+
+The **Barrio** dropdown remains disabled until you select a **Localidad**. This is intentional behavior.
+
+### Can't click Continue button
+
+Ensure all required fields in Step 1 are filled:
+- Localidad selected
+- Barrio selected  
+- Nombre filled
+- Apellido filled
+
+## Data Sources
+
+UniJAC integrates with official Bogotá government services:
+
+- **Localities API**: `serviciosgis.catastrobogota.gov.co` - Provides the list of all Bogotá localities
+- **Neighborhoods API**: Same service, filtered by locality code - Provides neighborhoods within each locality
+
+These APIs ensure your neighborhood data is accurate and up-to-date with official records.
+
+## Privacy and Data Usage
+
+By creating an account, you agree to:
+
+- Cookie usage for session management
+- Storage of your name, email, and neighborhood information
+- Association of your reports with your account (unless submitted anonymously)
+
+For full details, refer to UniJAC's privacy policy.
+
+## Next Steps
+
+After creating your account:
+
+- [Navigate your dashboard](/guide/dashboard-navigation) to explore the interface
+- [Report infrastructure issues](/guide/reporting-issues) in your neighborhood
+- [RSVP to community events](/guide/participating-events) near you

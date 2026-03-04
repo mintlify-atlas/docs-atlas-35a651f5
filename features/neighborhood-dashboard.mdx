@@ -1,0 +1,561 @@
+---
+title: "Neighborhood Dashboard"
+description: "Navigate and manage your neighborhood information through UniJAC's comprehensive dashboard interface"
+---
+
+## Overview
+
+The Neighborhood Dashboard is the central hub for all community information in UniJAC. It provides a comprehensive view of reports, events, schedules, and neighborhood activity through an intuitive layout accessible at `neighborhoods.html`.
+
+## Dashboard Layout
+
+The dashboard uses a responsive layout with three main sections:
+
+### Page Structure
+
+```html Main Layout
+<div class="layout">
+  <!-- Panel izquierdo -->
+  <aside id="menuLeft" class="aside-left">
+    <!-- Navigation buttons -->
+  </aside>
+  
+  <!-- HEADER -->
+  <header class="header">
+    <!-- Logo and actions -->
+  </header>
+  
+  <!-- CONTENIDO PRINCIPAL -->
+  <main id="contenido-principal">
+    <!-- Dashboard content -->
+  </main>
+</div>
+```
+
+<CardGroup cols={3}>
+  <Card title="Left Sidebar" icon="sidebar">
+    Navigation between report categories and sections
+  </Card>
+  <Card title="Header" icon="bars">
+    Branding, search, and user actions
+  </Card>
+  <Card title="Main Content" icon="square">
+    Reports, summaries, and detailed information
+  </Card>
+</CardGroup>
+
+## Navigation Panel
+
+The left sidebar provides quick access to all major sections:
+
+<CodeGroup>
+```html Navigation Buttons
+<aside id="menuLeft" class="aside-left">
+  <div class="actions-left" role="button" aria-label="Secciones de reportes">
+    <!-- Inicio -->
+    <button class="btn-action active">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" 
+              stroke-linejoin="round" stroke-width="1.5" 
+              d="M3 11.99v2.51c0 3.3 0 4.95 1.025 5.975S6.7 21.5 10 21.5h4c3.3 0 4.95 0 5.975-1.025S21 17.8 21 14.5v-2.51..."/>
+      </svg>
+      <span>Inicio</span>
+    </button>
+    
+    <!-- Eventos -->
+    <button class="btn-action">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" d="M16 2v4M8 2v4m5-2h-2..."/>
+      </svg>
+      <span>Eventos</span>
+    </button>
+    
+    <!-- Daños -->
+    <button class="btn-action">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" d="m5.67 9.914l3.062-4.143c1.979-2.678..."/>
+      </svg>
+      <span>Daños</span>
+    </button>
+    
+    <!-- Extravíos -->
+    <button class="btn-action">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" d="M13.618 21.367A2.37 2.37 0 0 1 12 22..."/>
+      </svg>
+      <span>Extravíos</span>
+    </button>
+    
+    <!-- Puntos críticos -->
+    <button class="btn-action">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" 
+              stroke-linejoin="round" stroke-width="1.5" 
+              d="m21 3l-8 8.5m-3.554-.415c-2.48.952-4.463.789-6.446.003..."/>
+      </svg>
+      <span>Puntos críticos</span>
+    </button>
+  </div>
+</aside>
+```
+
+```html Mobile Menu Button
+<button id="panelNav" type="button" class="menu-panel">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="currentColor" stroke="currentColor" stroke-linecap="round" 
+          stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16"/>
+  </svg>
+  <span class="sr-only">Menu hamburguesa para moviles</span>
+</button>
+```
+</CodeGroup>
+
+<Info>
+The navigation panel is collapsible on mobile devices and accessed via a hamburger menu button in the header.
+</Info>
+
+## Report Summary Cards
+
+The dashboard displays a real-time overview of all community reports:
+
+### Summary Section
+
+```html Report Summary
+<section class="summary-reports" aria-labelledby="page-title">
+  <header class="content-title">
+    <h1 id="page-title" class="title-neighborhood">
+      El Minuto de Dios
+    </h1>
+  </header>
+  
+  <div class="content-cards">
+    <h2 class="title-summary">Resumen de reportes</h2>
+    <div class="cards" role="region" aria-label="Indicadores">
+      <article class="card">
+        <p>Eventos</p>
+        <span class="badge">4</span>
+      </article>
+      
+      <article class="card">
+        <p>Daños</p>
+        <span class="badge">6</span>
+      </article>
+      
+      <article class="card">
+        <p>Extravíos</p>
+        <span class="badge">2</span>
+      </article>
+      
+      <article class="card">
+        <p>Aseo</p>
+        <span class="badge">11</span>
+      </article>
+    </div>
+  </div>
+</section>
+```
+
+<CardGroup cols={4}>
+  <Card title="Eventos" icon="calendar">
+    Active community events
+    
+    **Count:** 4
+  </Card>
+  <Card title="Daños" icon="triangle-exclamation">
+    Infrastructure damage reports
+    
+    **Count:** 6
+  </Card>
+  <Card title="Extravíos" icon="magnifying-glass">
+    Lost & found items
+    
+    **Count:** 2
+  </Card>
+  <Card title="Aseo" icon="trash">
+    Sanitation issues
+    
+    **Count:** 11
+  </Card>
+</CardGroup>
+
+## Important Schedules
+
+The dashboard prominently displays critical neighborhood schedules:
+
+### Garbage Collection Schedule
+
+<CodeGroup>
+```html Schedule Display
+<section class="schedule" aria-labelledby="horarios">
+  <section class="info-garbage" aria-labelledby="horarios">
+    <h3 class="title-schedule" id="horarios">Horarios importantes</h3>
+    <section class="header-garbage" aria-labelledby="garbage-title">
+      <h2 id="garbage-title" class="garbage-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+             viewBox="0 0 24 24" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" 
+             stroke-linejoin="round" stroke-width="1">
+            <path stroke-width="1.5" 
+                  d="M16 2v4M8 2v4m5-2h-2C7.229 4 5.343 4 4.172 5.172S3 8.229 3 12v2c0 3.771 0 5.657 1.172 6.828S7.229 22 11 22h2c3.771 0 5.657 0 6.828-1.172S21 17.771 21 14v-2c0-3.771 0-5.657-1.172-6.828S16.771 4 13 4M3 10h18"/>
+            <path stroke-width="2" d="M11.996 14h.008m-.008 4h.008m3.987-4H16m-8 0h.009M8 18h.009"/>
+          </g>
+        </svg>
+        Recolección de basura
+      </h2>
+    </section>
+    
+    <div class="week-garbage">
+      <ul>
+        <li>Lun</li>
+        <li>Mie</li>
+        <li>Vie</li>
+      </ul>
+      <time datetime="19:00">7:00 PM</time>
+    </div>
+  </section>
+</section>
+```
+
+```html Sidebar Version
+<section aria-labelledby="horarios">
+  <h2 id="horarios">Horarios importantes</h2>
+  <p><strong>Recolección de basura</strong></p>
+  <ul>
+    <li>Lunes</li>
+    <li>Miércoles</li>
+    <li>Jueves</li>
+  </ul>
+  <p>Hora aproximada: 8:00 – 9:00 PM</p>
+  <a href="#">Ver más</a>
+</section>
+```
+</CodeGroup>
+
+<Note>
+Garbage collection schedules vary by neighborhood. The dashboard displays the specific schedule for your selected barrio.
+</Note>
+
+**Schedule Information Includes:**
+- Collection days (Monday, Wednesday, Friday)
+- Approximate time (7:00 PM)
+- Visual calendar icon
+- Semantic time elements for accessibility
+
+## Community Reports Feed
+
+The main content area displays recent community reports:
+
+### Reports Section
+
+```html Reports Display
+<section class="reports" aria-labelledby="reportes-comunidad">
+  <header>
+    <h2 id="reportes-comunidad">Reportes de la comunidad</h2>
+    
+    <form aria-label="Filtros de reportes">
+      <label class="sr-only" for="filtro">Filtrar:</label>
+      <select id="filtro" name="filtro">
+        <option value="30">Últimos 30 días</option>
+        <option value="60">Últimos 60 días</option>
+      </select>
+    </form>
+  </header>
+  
+  <article class="card">
+    <div class="header-card">
+      <h3>Poste de luz no está funcionando</h3>
+      <p class="time-card">
+        <time datetime="2026-01-31">Reportado el 31 de enero de 2026</time>
+      </p>
+    </div>
+    <span class="info-card">
+      <p class="user-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round" 
+             stroke-width="1.5">
+            <path d="M17 8.5a5 5 0 1 0-10 0a5 5 0 0 0 10 0" />
+            <path d="M19 20.5a7 7 0 1 0-14 0" />
+          </g>
+        </svg>
+        Vecino anónimo
+      </p>
+      <p class="category-card">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <g fill="none" stroke="currentColor">
+            <circle cx="12" cy="12" r="10" stroke-width="1.5" />
+            <path stroke-width="1.5" d="M12 16v-4.5" />
+            <path stroke-width="1.8" d="M12 8.012v-.01" />
+          </g>
+        </svg>
+        Daños de infraestructura
+      </p>
+    </span>
+    
+    <p>
+      Buenas tardes vecinos, el poste de la manzana X no está
+      alumbrando. Por favor tengan cuidado al pasar por este lugar.
+    </p>
+    
+    <a href="#" aria-label="Ver detalles del reporte de poste de luz">
+      Ver reporte
+    </a>
+  </article>
+</section>
+```
+
+<Steps>
+  <Step title="Filter Reports">
+    Use the dropdown to filter by timeframe (30 or 60 days)
+  </Step>
+  <Step title="Browse Cards">
+    Scroll through report cards showing title, author, category, and preview
+  </Step>
+  <Step title="View Details">
+    Click "Ver reporte" to see full report information
+  </Step>
+</Steps>
+
+## Events Widget
+
+Upcoming events display in a dedicated section:
+
+```html Events Preview
+<section class="info-events" aria-labelledby="eventos">
+  <h3 id="eventos">Eventos y actividades disponibles</h3>
+  <article class="card">
+    <h4>Rumba terapia</h4>
+    <p>Alcaldía del barrio</p>
+    <p>
+      <time datetime="2026-03-14T07:00">14/03/2026 – 7:00 AM</time>
+    </p>
+  </article>
+  <a href="#">Ver más</a>
+</section>
+```
+
+<Tip>
+Click "Ver más" to navigate to the full Events & Activities page with complete event listings.
+</Tip>
+
+## News & Updates
+
+The dashboard includes a section for neighborhood news:
+
+```html News Section
+<section class="info-news" aria-labelledby="noticias">
+  <h3 id="noticias">Noticias y novedades del sector</h3>
+  <p>No hay novedades recientes.</p>
+</section>
+```
+
+## Header Actions
+
+The dashboard header provides essential utilities:
+
+<CodeGroup>
+```html Header Structure
+<header class="header">
+  <!-- Mobile menu button -->
+  <button id="panelNav" type="button" class="menu-panel">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
+         viewBox="0 0 24 24">
+      <path fill="currentColor" stroke="currentColor" stroke-linecap="round" 
+            stroke-linejoin="round" stroke-width="2" d="M4 5h16M4 12h16M4 19h16"/>
+    </svg>
+    <span class="sr-only">Menu hamburguesa para moviles</span>
+  </button>
+  
+  <!-- Logo -->
+  <a href="./neighborhoods.html">
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" version="1.0" 
+         viewBox="12.54 153.11 349.43 68.78">
+      <!-- SVG paths -->
+    </svg>
+    <span class="sr-only">logo</span>
+  </a>
+  
+  <!-- Actions -->
+  <nav class="nav-actions" aria-label="Acciones">
+    <button id="btnTheme" class="toggle-theme">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" 
+           viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 12a5 5 0 1 1-10 0a5 5 0 0 1 10 0Z" />
+          <path stroke-linecap="round" 
+                d="M12 2v1.5m0 17V22m7.07-2.929l-1.06-1.06M5.99 5.989L4.928 4.93M22 12h-1.5m-17 0H2m17.071-7.071l-1.06 1.06M5.99 18.011l-1.06 1.06"/>
+        </g>
+      </svg>
+      <span class="sr-only">Tema de navegacion</span>
+    </button>
+  </nav>
+</header>
+```
+
+```javascript Theme Toggle (neighborhoods.js)
+// Expected implementation in neighborhoods.js
+const btnTheme = document.querySelector("#btnTheme");
+const html = document.documentElement;
+
+btnTheme.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  html.setAttribute('data-theme', current === '' ? 'dark' : '');
+});
+```
+</CodeGroup>
+
+<CardGroup cols={2}>
+  <Card title="Mobile Menu" icon="bars">
+    Toggles left sidebar on small screens
+  </Card>
+  <Card title="Theme Toggle" icon="sun">
+    Switches between light and dark modes
+  </Card>
+</CardGroup>
+
+## Breadcrumb Navigation
+
+All dashboard pages include breadcrumb navigation:
+
+```html Breadcrumb
+<nav class="breadcrumb" aria-label="Ruta de navegación">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+       viewBox="0 0 24 24">
+    <path fill="currentColor" stroke="currentColor" stroke-linejoin="round" 
+          stroke-width="1.5" 
+          d="M3.889 9.663C4.393 10 5.096 10 6.5 10s2.107 0 2.611-.337a2 2 0 0 0 .552-.552C10 8.607 10 7.904 10 6.5s0-2.107-.337-2.611a2 2 0 0 0-.552-.552C8.607 3 7.904 3 6.5 3s-2.107 0-2.611.337a2 2 0 0 0-.552.552C3 4.393 3 5.096 3 6.5s0 2.107.337 2.611a2 2 0 0 0 .552.552Z..."/>
+  </svg>
+  <ol>
+    <li><a href="../index.html">Página principal</a></li>
+    <li aria-current="page"><a href="#">Barrio</a></li>
+  </ol>
+</nav>
+```
+
+<Info>
+Breadcrumbs update dynamically based on the current page, helping users understand their location in the site hierarchy.
+</Info>
+
+## Neighborhood Selection
+
+New users see a welcome modal for neighborhood selection:
+
+```html Welcome Modal
+<div id="welcomeModal" class="modal-welcome" role="dialog" 
+     aria-labelledby="modalTitulo" aria-hidden="true" aria-modal="true">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 class="title-modal" id="modalTitulo">
+        ¡Te damos la bienvenida! 🎉
+      </h2>
+    </div>
+    
+    <div class="modal-body">
+      <p>Antes de continuar, necesitamos encontrar tu barrio.</p>
+      <div class="type-barrios">
+        <label for="buscar-barrio" class="sr-only">Buscar tu barrio</label>
+        <input id="buscar-barrio" type="search" autocomplete="off" 
+               placeholder="Escribe tu barrio" list="barrios-lista" 
+               class="input-search" />
+      </div>
+      <datalist class="lista-barrios" id="barriosList">
+        <option></option>
+        <option></option>
+      </datalist>
+    </div>
+    <div class="modal-footer">
+      <button id="continueBtn" type="button" class="btn-primario">
+        Continuar
+      </button>
+    </div>
+  </div>
+</div>
+```
+
+<Warning>
+Users must select a neighborhood before accessing dashboard features. The modal uses an overlay to ensure selection.
+</Warning>
+
+## Responsive Design
+
+The dashboard adapts to different screen sizes:
+
+<Tabs>
+  <Tab title="Desktop">
+    - Left sidebar always visible
+    - Three-column layout
+    - Full navigation in header
+    - Expanded report cards
+  </Tab>
+  <Tab title="Tablet">
+    - Collapsible sidebar
+    - Two-column layout
+    - Hamburger menu for navigation
+    - Condensed cards
+  </Tab>
+  <Tab title="Mobile">
+    - Hidden sidebar (accessible via button)
+    - Single-column layout
+    - Bottom navigation possible
+    - Stacked cards
+  </Tab>
+</Tabs>
+
+## Accessibility Features
+
+<AccordionGroup>
+  <Accordion title="ARIA Labels">
+    All interactive elements include proper ARIA labels:
+    
+    ```html
+    <div class="actions-left" role="button" aria-label="Secciones de reportes">
+    <div class="cards" role="region" aria-label="Indicadores">
+    <nav class="nav-actions" aria-label="Acciones">
+    ```
+  </Accordion>
+  
+  <Accordion title="Semantic HTML">
+    - Proper heading hierarchy (h1 → h2 → h3)
+    - Semantic time elements with datetime attributes
+    - Landmarks (header, main, aside, nav, section)
+    - Screen reader text (.sr-only class)
+  </Accordion>
+  
+  <Accordion title="Keyboard Navigation">
+    - All buttons keyboard accessible
+    - Tab order follows logical flow
+    - Focus indicators on interactive elements
+    - Skip to content functionality
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+<Tip>
+**For Residents:**
+- Check the dashboard daily for neighborhood updates
+- Use filters to focus on relevant report types
+- Review garbage collection schedule weekly
+- Bookmark the dashboard for quick access
+</Tip>
+
+<Tip>
+**For Administrators:**
+- Keep event information current
+- Update report summaries regularly
+- Verify garbage collection schedules
+- Monitor report response times
+</Tip>
+
+## Related Features
+
+<CardGroup cols={3}>
+  <Card title="Community Reports" icon="flag" href="/features/community-reports">
+    Submit and track neighborhood reports
+  </Card>
+  <Card title="Events & Activities" icon="calendar" href="/features/events-activities">
+    Browse and join community events
+  </Card>
+  <Card title="Accessibility" icon="universal-access" href="/features/accessibility">
+    Customize your viewing experience
+  </Card>
+</CardGroup>

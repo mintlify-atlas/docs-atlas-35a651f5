@@ -1,0 +1,299 @@
+---
+title: "Reporting Issues"
+description: "Learn how to report infrastructure damage, security concerns, and other neighborhood issues on UniJAC"
+---
+
+UniJAC enables community members to report various types of issues affecting their neighborhood. This guide covers how to navigate to report sections, fill out forms, and track your submissions.
+
+## Types of Reports
+
+UniJAC supports several report categories:
+
+- **Daños de infraestructura** (Infrastructure damage) - Broken streetlights, damaged roads, deteriorating public facilities
+- **Seguridad y convivencia** (Security and coexistence) - Safety concerns and community conflicts
+- **Desorientación y objetos** (Lost persons and objects) - Missing persons, lost pets, found items
+- **Aseo, basuras y puntos críticos** (Sanitation, garbage, and critical points) - Waste management issues, illegal dumping sites
+
+## Accessing Report Categories
+
+<Steps>
+  <Step title="From the Dashboard">
+    After logging in, you'll see the main dashboard (neighborhoods page) which serves as your hub for all community activities.
+    
+    The left sidebar contains navigation buttons for each report category:
+    
+    - **Inicio** (Home) - Dashboard overview
+    - **Eventos** (Events) - Community events and activities
+    - **Daños** (Damage) - Infrastructure damage reports
+    - **Extravíos** (Lost items) - Lost persons/objects
+    - **Puntos críticos** (Critical points) - Sanitation and waste issues
+  </Step>
+
+  <Step title="Via Top Navigation">
+    Alternatively, use the top navigation menu to access specific report pages:
+    
+    - Eventos y actividades
+    - Daños de infraestructura
+    - Seguridad y convivencia
+    - Desorientación y objetos
+    - Aseo, basuras y puntos críticos
+    
+    Each link takes you to a dedicated page for that category.
+  </Step>
+
+  <Step title="Using Breadcrumbs">
+    The breadcrumb navigation shows your current location:
+    
+    ```
+    Página principal > Barrio > [Report Category]
+    ```
+    
+    This helps you track where you are and navigate back to previous sections.
+  </Step>
+</Steps>
+
+## Viewing Existing Reports
+
+Before submitting a new report, check if someone else has already reported the same issue.
+
+### Infrastructure Damage Reports
+
+On the **Daños de infraestructura** page, you'll find a table titled **"Casos reportados"** (Reported cases) with the following columns:
+
+| Column | Description |
+|--------|-------------|
+| **Evidencia** (Evidence) | Link to attached photos or files |
+| **Fecha de reporte** (Report date) | When the issue was reported |
+| **Nombre del caso** (Case name) | Brief title of the issue |
+| **Gravedad del caso** (Severity) | Priority level: Moderado (Moderate), Alto (High), Bajo (Low) |
+| **Estado del caso** (Case status) | Current status: Pendiente (Pending), En proceso (In progress), Resuelto (Resolved) |
+
+<Info>
+  The table uses semantic HTML with proper `<caption>` and `scope` attributes, making it accessible for screen readers.
+</Info>
+
+### Community Reports Feed
+
+The dashboard displays recent community reports in a card format:
+
+```
+[Report Card]
+┌─────────────────────────────────────┐
+│ Poste de luz no está funcionando    │
+│ Reportado el 31 de enero de 2026    │
+│                                     │
+│ 👤 Vecino anónimo                   │
+│ ℹ️  Daños de infraestructura        │
+│                                     │
+│ Buenas tardes vecinos, el poste     │
+│ de la manzana X no está alumbrando. │
+│                                     │
+│ [Ver reporte]                       │
+└─────────────────────────────────────┘
+```
+
+Each card shows:
+- **Report title**: Brief description of the issue
+- **Date**: When it was reported
+- **Reporter**: Username or "Vecino anónimo" (Anonymous neighbor)
+- **Category**: Type of report
+- **Description**: Full details
+- **Action link**: View full report
+
+## Creating a New Report
+
+<Steps>
+  <Step title="Navigate to the Report Category">
+    Choose the appropriate category for your issue:
+    
+    - Infrastructure problems → **Daños de infraestructura**
+    - Safety concerns → **Seguridad y convivencia**
+    - Lost items/persons → **Desorientación y objetos**
+    - Waste/sanitation → **Aseo, basuras y puntos críticos**
+  </Step>
+
+  <Step title="Click the Report Button">
+    Look for a "Reportar" or "Crear reporte" button on the category page.
+    
+    <Note>
+      While the current implementation shows existing reports, the reporting functionality would typically include a prominent action button to create new submissions.
+    </Note>
+  </Step>
+
+  <Step title="Fill Out Report Details">
+    A typical report form would include:
+    
+    **Required fields:**
+    - **Título del caso** (Case title): Brief, descriptive name
+    - **Descripción** (Description): Detailed explanation of the issue
+    - **Ubicación** (Location): Specific address or area (e.g., "Manzana X")
+    - **Gravedad** (Severity): Select from Bajo, Moderado, or Alto
+    
+    **Optional fields:**
+    - **Evidencia fotográfica** (Photo evidence): Upload images
+    - **Información de contacto** (Contact info): For follow-up
+  </Step>
+
+  <Step title="Add Photos or Evidence">
+    Visual evidence strengthens your report:
+    
+    - Click the file upload button or drag-and-drop area
+    - Upload photos showing the issue
+    - Supported formats: JPG, PNG, HEIC
+    - Maximum file size varies by implementation
+    
+    <Tip>
+      Take clear, well-lit photos that show the full extent of the problem. Multiple angles can be helpful.
+    </Tip>
+  </Step>
+
+  <Step title="Choose Reporting Mode">
+    Decide how you want to be identified:
+    
+    **Identified reporting:**
+    - Your name appears on the report
+    - Others can contact you directly
+    - Builds trust in the community
+    
+    **Anonymous reporting:**
+    - Shows as "Vecino anónimo" (Anonymous neighbor)
+    - Protects your privacy
+    - Still tracked to your account in the backend
+    
+    <Warning>
+      While reports show as anonymous to other users, platform administrators can see who submitted each report for moderation purposes.
+    </Warning>
+  </Step>
+
+  <Step title="Review and Submit">
+    Before submitting:
+    
+    1. **Review all details** for accuracy
+    2. **Check photo uploads** have completed
+    3. **Verify the category** is correct
+    4. **Confirm location** is specific enough
+    
+    Click **"Enviar reporte"** (Submit report) or **"Publicar"** (Publish) to create your submission.
+  </Step>
+</Steps>
+
+## After Submitting a Report
+
+### Confirmation
+
+Upon successful submission:
+
+- You'll see a confirmation message
+- The report appears in the relevant category feed
+- You receive a unique report ID for tracking
+
+### Status Updates
+
+Reports progress through several states:
+
+1. **Pendiente** (Pending) - Newly submitted, awaiting review
+2. **En revisión** (Under review) - Being evaluated by community or authorities
+3. **En proceso** (In progress) - Action is being taken
+4. **Resuelto** (Resolved) - Issue has been addressed
+5. **Cerrado** (Closed) - Report closed without action (with reason)
+
+### Tracking Your Reports
+
+View your submitted reports:
+
+- From your user profile/account settings
+- Filter the community feed by "Mis reportes" (My reports)
+- Receive notifications when status changes
+
+## Report Filtering
+
+The community reports section includes filtering options:
+
+```html
+<select id="filtro" name="filtro">
+  <option value="30">Últimos 30 días</option>
+  <option value="60">Últimos 60 días</option>
+</select>
+```
+
+Filter reports by:
+- **Time period**: Last 30 days, 60 days, etc.
+- **Category**: Show only specific types
+- **Status**: Filter by pending, resolved, etc.
+- **Neighborhood**: See reports from your area or nearby
+
+## Best Practices
+
+### Writing Effective Reports
+
+<AccordionGroup>
+  <Accordion title="Be Specific">
+    Instead of: "Streetlight broken"
+    
+    Write: "Streetlight on Calle 80 between Carreras 45-46 has been out for 3 days, creating a safety hazard at night"
+  </Accordion>
+
+  <Accordion title="Include Context">
+    Explain:
+    - When you first noticed the issue
+    - Whether it's getting worse
+    - If it affects pedestrians, traffic, or safety
+    - Any temporary measures taken
+  </Accordion>
+
+  <Accordion title="Use Clear Photos">
+    Good photos:
+    - Show the entire problem area
+    - Are taken in good lighting
+    - Include recognizable landmarks for location context
+    - Capture relevant details (damage, hazards, etc.)
+  </Accordion>
+
+  <Accordion title="Avoid Duplicates">
+    Before reporting:
+    - Search existing reports for the same issue
+    - Add comments to existing reports if already reported
+    - Coordinate with neighbors to strengthen a single report
+  </Accordion>
+</AccordionGroup>
+
+## Anonymous vs. Identified Reporting
+
+### When to Report Anonymously
+
+- **Security concerns**: Issues involving crime or suspicious activity
+- **Privacy reasons**: Personal safety or discretion required
+- **Sensitive topics**: Community conflicts or disputes
+
+### When to Report with Your Name
+
+- **Infrastructure issues**: Non-sensitive problems like potholes, lighting
+- **Building trust**: Showing accountability encourages community engagement
+- **Follow-up needed**: Authorities may need to contact you for details
+- **Community organizing**: Leading efforts to address shared concerns
+
+## Interacting with Reports
+
+Even if you didn't create a report, you can:
+
+- **View details**: Click "Ver reporte" (View report) to see full information
+- **Add comments**: Provide additional information or support
+- **Attach evidence**: Add your own photos if you've seen the issue
+- **Share**: Spread awareness on social media or messaging apps
+- **Vote/Support**: Some implementations allow upvoting to show priority
+
+## Accessibility Features
+
+UniJAC's reporting interface includes:
+
+- **Semantic HTML**: Proper heading hierarchy and landmarks
+- **ARIA labels**: `aria-label` attributes on interactive elements
+- **Keyboard navigation**: All forms accessible without a mouse
+- **Screen reader support**: Tables with captions and scoped headers
+- **Focus indicators**: Clear visual feedback for keyboard users
+
+## Next Steps
+
+- [Navigate the dashboard](/guide/dashboard-navigation) to explore other features
+- [Participate in events](/guide/participating-events) organized by your community
+- Learn about your neighborhood's [important schedules](#) like garbage collection

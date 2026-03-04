@@ -1,0 +1,292 @@
+---
+title: Public Services Reports
+description: Report disruptions in water, electricity, gas, and other essential public services in your neighborhood
+icon: lightbulb
+---
+
+## What Public Service Issues Can You Report?
+
+The public services category ("Servicios públicos") helps residents identify whether service disruptions are isolated to their home or affecting the entire neighborhood. Report issues with:
+
+- **Agua** (Water) - No water supply, low pressure, or water quality issues
+- **Electricidad** (Electricity) - Power outages, voltage fluctuations, or electrical failures
+- **Gas natural** (Natural gas) - Gas supply interruptions or pressure problems
+- **Internet/Teléfono** (Internet/Phone) - Communication service disruptions
+- **Alcantarillado** (Sewage) - Drainage or sewage system problems
+- **Alumbrado público** (Street lighting) - Non-functioning public lighting
+
+<Info>
+Public services reports help you quickly determine if an outage is affecting only your home (requiring you to contact your provider) or if it's a neighborhood-wide issue requiring collective action.
+</Info>
+
+## Why Report Public Service Issues?
+
+Reporting service disruptions on UniJAC provides several benefits:
+
+<CardGroup cols={2}>
+  <Card title="Scope Identification" icon="map-location-dot">
+    Quickly determine if the problem affects just you or the whole neighborhood
+  </Card>
+  <Card title="Collective Response" icon="users">
+    Multiple reports of the same issue carry more weight with service providers
+  </Card>
+  <Card title="Pattern Recognition" icon="calendar">
+    Identify recurring issues or service quality problems over time
+  </Card>
+  <Card title="JAC Advocacy" icon="megaphone">
+    Documented outages help community leaders demand better service
+  </Card>
+</CardGroup>
+
+## How to Submit a Public Services Report
+
+When reporting a service disruption, include:
+
+### Essential Information
+
+1. **Service type** - Water, electricity, gas, etc.
+2. **Time started** - When you first noticed the issue
+3. **Location** - Specific streets or blocks affected
+4. **Description** - Nature of the problem (complete outage, intermittent, quality issue)
+5. **Provider contacted** - Whether you've called your service provider
+6. **Ticket number** - If you received a service request number
+
+### Sample Public Services Report
+
+```javascript Example Report
+{
+  "category": "Servicios Públicos",
+  "serviceType": "Electricidad",
+  "startTime": "2026-03-04T15:30",
+  "location": "Calle 75 a 78, entre Carreras 12 y 15",
+  "description": "Corte total de energía eléctrica",
+  "providerContacted": "Codensa",
+  "ticketNumber": "REQ-2026-445678",
+  "estimatedRestoration": "18:00",
+  "status": "Reportado al proveedor"
+}
+```
+
+<Tip>
+Always contact your service provider first for outages, then post to UniJAC to help neighbors understand the situation and expected resolution time.
+</Tip>
+
+## Service Categories Explained
+
+### Fallas de Electricidad (Electrical Failures)
+
+**Common issues:**
+- Complete power outages (cortes de luz)
+- Voltage fluctuations affecting appliances
+- Partial outages (some circuits working)
+- Transformer failures
+
+**When to report:**
+- If multiple homes are affected
+- For extended outages (>2 hours)
+- For frequent recurring outages
+- When provider estimates are delayed
+
+### Fallas de Agua (Water Service Issues)
+
+**Common issues:**
+- Complete water supply interruption
+- Low water pressure
+- Discolored or cloudy water
+- Scheduled maintenance periods
+
+**When to report:**
+- Unannounced water cuts
+- Water quality concerns
+- Extended service interruptions
+- When multiple households are affected
+
+### Fallas de Gas Natural (Gas Service Issues)
+
+**Common issues:**
+- No gas supply to homes
+- Low gas pressure affecting appliances
+- Gas odors or suspected leaks
+
+<Warning>
+**Gas Safety:** If you smell gas, evacuate immediately, don't use electrical switches or phones indoors, and call emergency services (123) and your gas provider from a safe distance.
+</Warning>
+
+### Alcantarillado y Drenaje (Sewage and Drainage)
+
+**Common issues:**
+- Backed up sewage systems
+- Overflowing manholes
+- Drainage problems causing flooding
+- Bad odors from drains
+
+<Note>
+Sewage issues often overlap with infrastructure reports. If the problem is damaged pipes or infrastructure, consider reporting in [Infrastructure Reports](/reports/infrastructure) as well.
+</Note>
+
+## Understanding the Index Page Reference
+
+The UniJAC home page highlights public services as a key report category:
+
+```html Public Services Card from index.html
+<article class="grid">
+  <svg><!-- Lightbulb icon --></svg>
+  <h4 class="title">Servicios públicos</h4>
+  <p class="info">
+    Revisa si las fallas de los servicios ocurren solo en tu casa o
+    en todo tu barrio.
+  </p>
+</article>
+```
+
+This feature emphasizes the collaborative aspect - helping residents distinguish between individual and community-wide service issues.
+
+## Major Service Providers in Bogotá
+
+Know your providers for quick contact:
+
+| Service | Common Providers | Emergency Number |
+|---------|------------------|------------------|
+| **Electricity** | Codensa, EEC | 115 |
+| **Water** | Acueducto de Bogotá | 116 |
+| **Gas Natural** | Gas Natural Fenosa, Vanti | 164 |
+| **Internet** | Claro, Movistar, ETB | Provider-specific |
+| **Sewage** | Acueducto de Bogotá | 116 |
+
+<Tip>
+Save these emergency numbers in your phone and post them in your UniJAC profile for easy reference during outages.
+</Tip>
+
+## What Happens After You Report?
+
+<Steps>
+  <Step title="Community visibility">
+    Your report appears in the public services feed for your neighborhood
+  </Step>
+  <Step title="Neighbor confirmation">
+    Other residents confirm if they're experiencing the same issue
+  </Step>
+  <Step title="Scope determination">
+    Community quickly identifies the geographic extent of the outage
+  </Step>
+  <Step title="Provider communication">
+    If multiple households are affected, JAC may contact the provider directly
+  </Step>
+  <Step title="Updates shared">
+    Residents share updates about estimated restoration times
+  </Step>
+  <Step title="Resolution tracking">
+    Report status updates when service is restored
+  </Step>
+</Steps>
+
+## Scheduled vs. Unscheduled Outages
+
+### Scheduled Maintenance
+
+Service providers sometimes schedule maintenance:
+- Usually announced 48-72 hours in advance
+- Typically during low-usage hours
+- Have defined start and end times
+
+**Action:** Post scheduled maintenance notices on UniJAC so neighbors can prepare (fill water containers, plan around power needs, etc.)
+
+### Unscheduled Outages
+
+Unexpected service interruptions:
+- Emergency repairs
+- Equipment failures
+- Weather-related damage
+- Accidents affecting infrastructure
+
+**Action:** Report immediately so neighbors aren't surprised and can take appropriate action.
+
+## Status Tracking for Service Reports
+
+Public services reports use status indicators:
+
+- **Reportado** (Reported) - Issue confirmed, provider contacted
+- **Confirmado por proveedor** (Confirmed by provider) - Provider acknowledged the issue
+- **Reparación en curso** (Repair in progress) - Technicians are working on it
+- **Servicio restaurado** (Service restored) - Issue resolved
+- **Pendiente** (Pending) - Awaiting provider response
+
+## Documentation for Advocacy
+
+Frequent service disruptions? UniJAC reports create documentation:
+
+1. **Track frequency** - How often outages occur
+2. **Duration records** - How long services are down
+3. **Pattern identification** - Time of day, days of week, seasonal trends
+4. **Impact assessment** - Number of households affected
+
+<Info>
+This documentation helps your JAC formally request service improvements, file complaints with regulatory agencies, or negotiate better service agreements.
+</Info>
+
+## Best Practices for Service Reports
+
+### Be Specific
+- Include exact times when service was lost and restored
+- Specify which streets or blocks are affected
+- Note any patterns (e.g., "outages every Tuesday evening")
+
+### Update Regularly
+- Edit your report when you get new information
+- Share provider responses or ticket numbers
+- Confirm when service is restored
+
+### Coordinate with Neighbors
+- Check if others have the same issue before calling provider
+- Share provider responses with the community
+- Collaborate on filing complaints if service is consistently poor
+
+### Include Context
+- Note if weather might be a factor
+- Mention if you saw repair trucks or crews
+- Share any official communications from providers
+
+## Emergency Service Disruptions
+
+Some service disruptions require immediate action:
+
+<Warning>
+**Immediate Emergencies:**
+- Gas leaks - evacuate and call 164 or 123
+- Downed power lines - stay away and call 115
+- Sewage backups into homes - call 116
+- Widespread flooding - call 123
+
+Report these to authorities FIRST, then document on UniJAC.
+</Warning>
+
+## Integration with Other Reports
+
+Public service issues often relate to other report types:
+
+- **Infrastructure** - Damaged infrastructure causing service disruptions
+- **Sanitation** - Sewage backups create cleanliness issues
+- **Security** - Non-functioning street lights create safety concerns
+
+## Contributing to Service Reliability
+
+Your public services reports help:
+
+<CardGroup cols={2}>
+  <Card title="Quick Problem Solving" icon="gauge-high">
+    Residents quickly determine if they need to troubleshoot or wait for provider
+  </Card>
+  <Card title="Community Coordination" icon="network-wired">
+    Multiple reports trigger collective action and faster provider response
+  </Card>
+  <Card title="Service Improvement" icon="arrow-trend-up">
+    Documented issues lead to infrastructure upgrades and better maintenance
+  </Card>
+  <Card title="Emergency Planning" icon="circle-exclamation">
+    History of outages helps community prepare for future disruptions
+  </Card>
+</CardGroup>
+
+<Note>
+Consistent reporting of service issues creates accountability for providers and helps your JAC advocate for improved infrastructure and service quality.
+</Note>

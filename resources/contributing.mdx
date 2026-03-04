@@ -1,0 +1,376 @@
+---
+title: "Guía de Contribución"
+description: "Cómo contribuir al desarrollo de UniJAC"
+icon: "code-branch"
+---
+
+## Bienvenido a UniJAC
+
+UniJAC es un proyecto de **código abierto** licenciado bajo MIT. Valoramos y apreciamos todas las contribuciones de la comunidad, ya sean grandes o pequeñas. Esta guía te ayudará a comenzar a contribuir al proyecto.
+
+<Info>
+  **Repositorio en GitHub**: [github.com/alexander10pb/UniJac](https://github.com/alexander10pb/UniJac)
+</Info>
+
+## Por Qué Contribuir
+
+Al contribuir a UniJAC, estás ayudando a:
+
+- Fortalecer las comunidades de Bogotá
+- Mejorar la comunicación entre residentes y JAC
+- Desarrollar una herramienta útil para la gestión comunitaria
+- Contribuir al ODS 11 (Ciudades y Comunidades Sostenibles)
+- Aprender y crecer como desarrollador
+
+## Formas de Contribuir
+
+Hay muchas maneras de contribuir, incluso si no eres desarrollador:
+
+<CardGroup cols={2}>
+  <Card title="Reportar Bugs" icon="bug">
+    Encuentra y reporta problemas técnicos que encuentres en la plataforma
+  </Card>
+  <Card title="Sugerir Funcionalidades" icon="lightbulb">
+    Propón nuevas características que mejorarían la plataforma
+  </Card>
+  <Card title="Escribir Código" icon="code">
+    Contribuye con código para corregir bugs o implementar nuevas funcionalidades
+  </Card>
+  <Card title="Mejorar Documentación" icon="book">
+    Ayuda a mejorar y traducir la documentación del proyecto
+  </Card>
+</CardGroup>
+
+## Configuración del Entorno de Desarrollo
+
+Sigue estos pasos para configurar UniJAC en tu máquina local:
+
+### Prerrequisitos
+
+Asegúrate de tener instalado:
+
+- **Node.js** (versión 14 o superior)
+- **npm** (normalmente viene con Node.js)
+- **Git**
+- Un editor de código (recomendamos Visual Studio Code)
+
+### Instalación
+
+<Steps>
+  <Step title="Clonar el repositorio">
+    Primero, clona el repositorio de GitHub:
+
+    ```bash
+    git clone https://github.com/alexander10pb/UniJac.git
+    cd UniJac
+    ```
+  </Step>
+
+  <Step title="Instalar dependencias">
+    Instala las dependencias del proyecto usando npm:
+
+    ```bash
+    npm install
+    ```
+  </Step>
+
+  <Step title="Ejecutar el servidor de desarrollo">
+    Inicia el servidor de desarrollo local:
+
+    ```bash
+    npm start
+    ```
+
+    La aplicación estará disponible en `http://localhost:3000` (o el puerto que se indique en la consola).
+  </Step>
+</Steps>
+
+### Estructura del Proyecto
+
+Familiarízate con la estructura de carpetas de UniJAC:
+
+```
+📦UniJAC
+ ┣ 📂app
+ ┣ 📂assets
+ ┃ ┣ 📂img          # Imágenes y recursos visuales
+ ┃ ┗ 📂videos       # Videos utilizados en la plataforma
+ ┣ 📂css
+ ┃ ┣ 📜globals.css  # Estilos globales
+ ┃ ┣ 📜index.css    # Estilos de la página principal
+ ┃ ┗ 📜neighborhoods.css  # Estilos de barrios
+ ┣ 📂js
+ ┃ ┣ 📜index.js     # JavaScript principal
+ ┃ ┣ 📜neighborhoods.js
+ ┃ ┗ 📜routes.js    # Gestión de rutas
+ ┣ 📂pages          # Páginas HTML de la aplicación
+ ┃ ┣ 📜disorientation.html
+ ┃ ┣ 📜eventsandactivities.html
+ ┃ ┣ 📜infrastructure.html
+ ┃ ┣ 📜neighborhoods.html
+ ┃ ┣ 📜register.html
+ ┃ ┗ 📜sanitation.html
+ ┣ 📜index.html     # Página principal
+ ┗ 📜README.md
+```
+
+## Stack Tecnológico
+
+UniJAC está construido con las siguientes tecnologías:
+
+- **HTML5**: Estructura de la aplicación
+- **CSS3**: Estilos y diseño responsivo
+- **JavaScript**: Lógica del lado del cliente
+- **Node.js**: Entorno de ejecución
+- **Figma**: Diseño UI/UX (para referencia)
+
+## Flujo de Trabajo para Contribuir
+
+### 1. Reportar un Bug
+
+Si encuentras un bug, ayúdanos a solucionarlo:
+
+<Steps>
+  <Step title="Verificar si ya existe">
+    Revisa los [issues existentes](https://github.com/alexander10pb/UniJac/issues) para ver si el problema ya fue reportado.
+  </Step>
+
+  <Step title="Crear un nuevo issue">
+    Si es un bug nuevo, crea un issue con:
+
+    - **Título descriptivo**: Resume el problema en una línea
+    - **Descripción detallada**: Explica qué esperabas que sucediera y qué sucedió realmente
+    - **Pasos para reproducir**: Detalla los pasos exactos para reproducir el bug
+    - **Capturas de pantalla**: Si es posible, incluye imágenes
+    - **Información del entorno**: Navegador, sistema operativo, versión
+  </Step>
+</Steps>
+
+**Ejemplo de reporte de bug:**
+
+```markdown
+**Título**: El botón de "Enviar reporte" no responde en móvil
+
+**Descripción**:
+Al intentar enviar un reporte de infraestructura desde un dispositivo móvil,
+el botón "Enviar" no responde al hacer clic.
+
+**Pasos para reproducir**:
+1. Abrir UniJAC en un navegador móvil (Chrome en Android)
+2. Navegar a la sección de reportes
+3. Completar el formulario de reporte de infraestructura
+4. Hacer clic en el botón "Enviar"
+
+**Comportamiento esperado**:
+El reporte debería enviarse y mostrar un mensaje de confirmación.
+
+**Comportamiento actual**:
+El botón no responde y no pasa nada.
+
+**Entorno**:
+- Dispositivo: Samsung Galaxy S21
+- Navegador: Chrome 98
+- Sistema Operativo: Android 12
+
+**Captura de pantalla**:
+[Adjuntar imagen si es posible]
+```
+
+### 2. Sugerir una Funcionalidad
+
+Tienes una idea para mejorar UniJAC:
+
+<Steps>
+  <Step title="Verificar sugerencias existentes">
+    Revisa los issues para ver si alguien ya sugirió algo similar.
+  </Step>
+
+  <Step title="Crear un issue de feature request">
+    Crea un issue etiquetado como "enhancement" con:
+
+    - **Descripción del problema**: ¿Qué problema resuelve esta funcionalidad?
+    - **Solución propuesta**: Describe tu idea de implementación
+    - **Alternativas consideradas**: Si hay otras formas de resolver el problema
+    - **Contexto adicional**: Cualquier otra información relevante
+  </Step>
+</Steps>
+
+### 3. Contribuir con Código
+
+Para contribuir código al proyecto:
+
+<Steps>
+  <Step title="Fork el repositorio">
+    Haz un fork del repositorio a tu cuenta de GitHub haciendo clic en el botón "Fork".
+  </Step>
+
+  <Step title="Crear una rama (branch)">
+    Crea una rama descriptiva para tu trabajo:
+
+    ```bash
+    git checkout -b feature/nombre-de-tu-funcionalidad
+    # o
+    git checkout -b fix/nombre-del-bug
+    ```
+
+    **Convenciones de nombres de ramas:**
+    - `feature/` - para nuevas funcionalidades
+    - `fix/` - para correcciones de bugs
+    - `docs/` - para cambios en documentación
+    - `refactor/` - para refactorización de código
+  </Step>
+
+  <Step title="Hacer tus cambios">
+    Realiza tus cambios siguiendo las guías de estilo del proyecto:
+
+    - Escribe código limpio y legible
+    - Comenta el código cuando sea necesario
+    - Mantén la consistencia con el estilo existente
+    - Prueba tus cambios localmente
+  </Step>
+
+  <Step title="Commit tus cambios">
+    Haz commits con mensajes descriptivos:
+
+    ```bash
+    git add .
+    git commit -m "feat: añadir validación de formularios en reportes"
+    ```
+
+    **Convenciones de commits:**
+    - `feat:` - nueva funcionalidad
+    - `fix:` - corrección de bug
+    - `docs:` - cambios en documentación
+    - `style:` - cambios de formato (no afectan lógica)
+    - `refactor:` - refactorización de código
+    - `test:` - añadir o modificar tests
+    - `chore:` - tareas de mantenimiento
+  </Step>
+
+  <Step title="Push a tu fork">
+    Sube tus cambios a tu repositorio fork:
+
+    ```bash
+    git push origin feature/nombre-de-tu-funcionalidad
+    ```
+  </Step>
+
+  <Step title="Crear un Pull Request">
+    Ve a tu fork en GitHub y haz clic en "New Pull Request":
+
+    - Proporciona un título claro y descriptivo
+    - Describe qué cambios hiciste y por qué
+    - Referencia cualquier issue relacionado (usa `Closes #123`)
+    - Añade capturas de pantalla si son relevantes
+    - Espera la revisión del equipo
+  </Step>
+</Steps>
+
+### Guías de Estilo
+
+#### HTML
+
+- Usa indentación de 2 espacios
+- Usa etiquetas semánticas (`<header>`, `<nav>`, `<section>`, etc.)
+- Incluye atributos ARIA para accesibilidad
+- Usa comillas dobles para atributos
+
+```html
+<section class="hero-content" id="inicio" aria-labelledby="titulo-hero">
+  <h1 class="title-hero" id="titulo-hero">
+    Descubre todo lo que sucede en tu comunidad
+  </h1>
+</section>
+```
+
+#### CSS
+
+- Usa indentación de 2 espacios
+- Organiza propiedades alfabéticamente cuando sea posible
+- Usa nombres de clases descriptivos en minúsculas con guiones
+- Agrupa estilos relacionados
+
+```css
+.hero-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+```
+
+#### JavaScript
+
+- Usa indentación de 2 espacios
+- Usa `const` y `let`, evita `var`
+- Usa nombres descriptivos para variables y funciones
+- Comenta código complejo
+- Usa comillas simples para strings
+
+```javascript
+const submitReport = (reportData) => {
+  // Validar datos antes de enviar
+  if (!validateReport(reportData)) {
+    return showError('Datos inválidos');
+  }
+  
+  // Enviar reporte al servidor
+  return sendToServer(reportData);
+};
+```
+
+## Proceso de Revisión
+
+Cuando envías un Pull Request:
+
+1. **Revisión automática**: Se ejecutan checks automáticos (si están configurados)
+2. **Revisión de código**: Un mantenedor revisará tu código
+3. **Feedback**: Es posible que recibas comentarios y sugerencias
+4. **Iteración**: Haz los cambios solicitados si es necesario
+5. **Aprobación**: Una vez aprobado, tu código será fusionado al proyecto
+
+<Note>
+  **Sé paciente**: Los mantenedores son voluntarios y pueden tardar en revisar tu PR. Si no recibes respuesta en una semana, puedes hacer un comentario amable solicitando una revisión.
+</Note>
+
+## Código de Conducta
+
+Al contribuir a UniJAC, te pedimos que:
+
+- Seas respetuoso con todos los colaboradores
+- Proporciones críticas constructivas
+- Aceptes feedback con mente abierta
+- Te enfoques en lo que es mejor para la comunidad
+- Muestres empatía hacia otros miembros
+
+## Contacto con el Equipo
+
+Si tienes preguntas sobre cómo contribuir:
+
+<CardGroup cols={3}>
+  <Card title="GitHub Issues" icon="github" href="https://github.com/alexander10pb/UniJac/issues">
+    Abre un issue con tu pregunta
+  </Card>
+  <Card title="Soporte" icon="headset" href="/resources/support">
+    Contacta al equipo de soporte
+  </Card>
+  <Card title="Autores" icon="users">
+    [@David Gutierrez](https://github.com/DavidGutierrez001)
+    
+    [@Fabian Gutierrez](https://github.com/fabianlindo6556a-oss)
+    
+    [@John Alexander](https://github.com/alexander10pb)
+  </Card>
+</CardGroup>
+
+## Licencia
+
+Al contribuir a UniJAC, aceptas que tus contribuciones se licenciarán bajo la misma licencia MIT del proyecto.
+
+<img src="https://img.shields.io/badge/Licencia-MIT-blue?style=for-the-badge" alt="Licencia MIT" />
+
+---
+
+<Card title="¡Gracias por contribuir!" icon="heart">
+  Cada contribución, sin importar cuán pequeña sea, ayuda a hacer de UniJAC una mejor herramienta para las comunidades de Bogotá. ¡Tu esfuerzo es apreciado!
+</Card>

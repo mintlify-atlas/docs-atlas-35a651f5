@@ -1,0 +1,126 @@
+---
+title: Infrastructure Reports
+description: Report street damage, deteriorating roads, broken sidewalks, and infrastructure issues in your neighborhood
+icon: road
+---
+
+## What Infrastructure Issues Can You Report?
+
+The infrastructure report category helps residents document and track physical damage to public spaces and roads in their neighborhood. This system allows the community to:
+
+- **Deterioro vial** (Road deterioration) - potholes, cracked asphalt, damaged roads
+- **Damaged sidewalks** - broken or uneven sidewalks that pose safety risks
+- **Street lighting issues** - malfunctioning or broken street lights
+- **Damaged public furniture** - broken benches, bus stops, or signs
+- **Drainage problems** - clogged drains or flooding issues
+
+<Info>
+Infrastructure reports help your JAC (Junta de Acción Comunal) prioritize repairs and communicate with local authorities about maintenance needs.
+</Info>
+
+## How to Submit an Infrastructure Report
+
+When reporting infrastructure damage, include the following information:
+
+1. **Location** - Specific street address or intersection
+2. **Type of damage** - Select from categories like deterioro vial, sidewalk damage, etc.
+3. **Severity level** - Indicate if it's minor, moderate, or severe
+4. **Photo evidence** - Attach clear photos showing the damage
+5. **Description** - Brief explanation of the issue and any safety concerns
+
+### Report Submission Form
+
+```javascript Example Report Structure
+{
+  "category": "Infrastructure",
+  "subcategory": "Deterioro vial",
+  "location": "Calle 81A",
+  "severity": "Moderado",
+  "description": "Large pothole affecting vehicle traffic",
+  "evidence": "photo_attachment.jpg",
+  "reportDate": "2026-01-05"
+}
+```
+
+## Report Severity Levels
+
+<CardGroup cols={3}>
+  <Card title="Minor" icon="circle-check" color="#68D391">
+    Small cracks or cosmetic damage that doesn't pose immediate danger
+  </Card>
+  <Card title="Moderate" icon="triangle-exclamation" color="#F6AD55">
+    Noticeable damage that could worsen or cause minor accidents
+  </Card>
+  <Card title="Severe" icon="octagon-exclamation" color="#F56565">
+    Dangerous conditions requiring immediate attention
+  </Card>
+</CardGroup>
+
+## Real Case Example: Deterioro Vial
+
+From the UniJAC system, here's an actual infrastructure report:
+
+<Warning>
+**Report:** Deterioro vial  
+**Location:** Street in neighborhood  
+**Date Reported:** Enero 5, 2026  
+**Severity:** Moderado  
+**Status:** Pendiente (Pending)
+</Warning>
+
+This report includes photo evidence (adjunto) and is being tracked by the community until resolution.
+
+## What Happens After You Submit?
+
+Once you submit an infrastructure report:
+
+1. **Immediate visibility** - Your report appears in the "Casos reportados" (Reported Cases) table
+2. **Community awareness** - Neighbors can see the issue and add their observations
+3. **JAC review** - Local community leaders review and prioritize the report
+4. **Status tracking** - Monitor your report status: Pendiente (Pending), En proceso (In progress), or Resuelto (Resolved)
+5. **Authority notification** - JAC communicates with local government for repairs
+
+## Viewing Infrastructure Reports
+
+The infrastructure reports page displays all cases in a table format:
+
+| Column | Information |
+|--------|-------------|
+| **Evidencia** | Link to photo attachments |
+| **Fecha de reporte** | Date the issue was reported |
+| **Nombre del caso** | Type of infrastructure damage |
+| **Gravedad del caso** | Severity level (Moderado, Alto, etc.) |
+| **Estado del caso** | Current status (Pendiente, Resuelto, etc.) |
+
+## Best Practices for Infrastructure Reports
+
+<Steps>
+  <Step title="Take clear photos">
+    Capture the damage from multiple angles showing the full extent and any reference points
+  </Step>
+  <Step title="Note exact location">
+    Include street names, nearby landmarks, or GPS coordinates
+  </Step>
+  <Step title="Describe safety impact">
+    Explain how the damage affects pedestrians, vehicles, or accessibility
+  </Step>
+  <Step title="Check for duplicates">
+    Review existing reports to avoid duplicate submissions for the same issue
+  </Step>
+</Steps>
+
+<Tip>
+Infrastructure issues often affect entire streets or blocks. Check if neighbors have already reported the same problem and add your observations to existing reports.
+</Tip>
+
+## Common Infrastructure Issues in Bogotá Neighborhoods
+
+- **Potholes** - Especially common after rainy seasons
+- **Cracked sidewalks** - Caused by tree roots or weather damage
+- **Broken street lights** - Affecting neighborhood safety
+- **Drainage issues** - Leading to flooding during rain
+- **Damaged speed bumps** - Creating traffic hazards
+
+<Note>
+Your infrastructure reports help create a documented history of maintenance needs, which JAC leaders can use when requesting government resources and prioritizing community improvements.
+</Note>

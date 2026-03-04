@@ -1,0 +1,357 @@
+---
+title: "Community Reports"
+description: "Learn how to submit and manage community reports across six categories in UniJAC"
+---
+
+## Overview
+
+UniJAC enables residents to report issues and share information across six key categories. Each report helps build a comprehensive view of neighborhood conditions and facilitates community action.
+
+## Report Categories
+
+The platform supports six report categories visible throughout the interface:
+
+### 1. Infrastructure (Infraestructura)
+
+Report damages and deterioration in neighborhood infrastructure:
+
+<CodeGroup>
+```html Navigation Button
+<button class="btn-action">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="1.5" 
+          d="M13.618 21.367A2.37 2.37 0 0 1 12 22a2.37 2.37 0 0 1-1.617-.633C6.412 17.626 1.09 13.447 3.685 7.38C5.09 4.1 8.458 2 12.001 2s6.912 2.1 8.315 5.38c2.592 6.06-2.717 10.259-6.698 13.987Z"/>
+  </svg>
+  <span>Daños</span>
+</button>
+```
+
+```html Report Example
+<article class="card">
+  <div class="header-card">
+    <h3>Poste de luz no está funcionando</h3>
+    <p class="time-card">
+      <time datetime="2026-01-31">Reportado el 31 de enero de 2026</time>
+    </p>
+  </div>
+  <span class="info-card">
+    <p class="user-card">Vecino anónimo</p>
+    <p class="category-card">Daños de infraestructura</p>
+  </span>
+  <p>
+    Buenas tardes vecinos, el poste de la manzana X no está
+    alumbrando. Por favor tengan cuidado al pasar por este lugar.
+  </p>
+  <a href="#" aria-label="Ver detalles del reporte">Ver reporte</a>
+</article>
+```
+</CodeGroup>
+
+**Examples include:**
+- Street lighting failures
+- Road deterioration ("Deterioro vial")
+- Damaged public fixtures
+- Structural issues
+
+### 2. Sanitation (Espacio público)
+
+Report accumulated waste, garbage, graffiti, and illegal occupations:
+
+<Info>
+This category includes a dedicated sanitation page (`sanitation.html`) with map visualization and filtering capabilities.
+</Info>
+
+```html Sanitation Report Types
+<ul class="leyenda">
+  <li>
+    <span class="dot-naranja"></span> 
+    Basuras domiciliarias en andenes/esquina en lugares no autorizados.
+  </li>
+  <li>
+    <span class="dot-morado"></span> 
+    Muebles viejos, llantas, poda/cesped en espacios publicos.
+  </li>
+  <li>
+    <span class="dot-azul"></span> 
+    Botaderos cerca de ríos, parques zonas verdes que deterioran el entorno.
+  </li>
+  <li>
+    <span class="dot-verde"></span> 
+    Sitios con malos olores y presencia de roedores/moscas.
+  </li>
+</ul>
+```
+
+### 3. Security (Seguridad)
+
+Inform neighbors about thefts, losses, or suspicious activity:
+
+<CardGroup cols={2}>
+  <Card title="Report Types" icon="shield">
+    - Robberies and thefts
+    - Lost items
+    - Suspicious persons
+    - Security concerns
+  </Card>
+  <Card title="Visibility" icon="eye">
+    Reports appear on the neighborhood dashboard with timestamps and severity indicators
+  </Card>
+</CardGroup>
+
+### 4. Public Services (Servicios públicos)
+
+Check if service failures affect just your home or the entire neighborhood:
+
+```html Index Page Description
+<h4 class="title">Servicios públicos</h4>
+<p class="info">
+  Revisa si las fallas de los servicios ocurren solo en tu casa o
+  en todo tu barrio.
+</p>
+```
+
+### 5. Lost & Found (Extravíos)
+
+Report and find lost items or missing persons:
+
+```html Navigation
+<button class="btn-action">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-width="1.5" 
+          d="M13.618 21.367A2.37 2.37 0 0 1 12 22..."/>
+  </svg>
+  <span>Extravíos</span>
+</button>
+```
+
+### 6. Places of Interest (Lugares e interéses)
+
+Help neighbors discover stores and locations they've never visited:
+
+<Tip>
+This category promotes local businesses and community landmarks, fostering neighborhood exploration.
+</Tip>
+
+## Submitting Reports
+
+### Anonymous vs Identified Reports
+
+Users can choose to submit reports anonymously or with identification:
+
+<CodeGroup>
+```html Anonymous Report Display
+<p class="user-card">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+      <path d="M17 8.5a5 5 0 1 0-10 0a5 5 0 0 0 10 0" />
+      <path d="M19 20.5a7 7 0 1 0-14 0" />
+    </g>
+  </svg>
+  Vecino anónimo
+</p>
+```
+
+```html Category Label
+<p class="category-card">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor">
+      <circle cx="12" cy="12" r="10" stroke-width="1.5" />
+      <path stroke-width="1.5" d="M12 16v-4.5" />
+      <path stroke-width="1.8" d="M12 8.012v-.01" />
+    </g>
+  </svg>
+  Daños de infraestructura
+</p>
+```
+</CodeGroup>
+
+### Report Structure
+
+Each report includes:
+
+1. **Title** - Brief description of the issue
+2. **Timestamp** - When the report was submitted
+3. **Author** - Username or "Vecino anónimo"
+4. **Category** - One of six categories
+5. **Description** - Detailed explanation
+6. **Evidence** - Optional attachments ("Adjunto")
+7. **Severity** - Moderado, Alto, Crítico
+8. **Status** - Pendiente, En progreso, Resuelto
+
+## After Submission
+
+### Report Visibility
+
+Submitted reports appear in multiple locations:
+
+<Steps>
+  <Step title="Dashboard Summary">
+    Report counts update in real-time on the neighborhood dashboard
+    
+    ```html
+    <article class="card">
+      <p>Daños</p>
+      <span class="badge">6</span>
+    </article>
+    ```
+  </Step>
+  
+  <Step title="Category Pages">
+    Reports are listed on dedicated category pages with filtering options
+    
+    ```html
+    <form aria-label="Filtros de reportes">
+      <select id="filtro" name="filtro">
+        <option value="30">Últimos 30 días</option>
+        <option value="60">Últimos 60 días</option>
+      </select>
+    </form>
+    ```
+  </Step>
+  
+  <Step title="Community Feed">
+    Recent reports display in the "Reportes de la comunidad" section
+  </Step>
+</Steps>
+
+### Report Status Tracking
+
+Reports progress through defined states:
+
+```html Status Display
+<td>
+  <span aria-label="Estado pendiente">Pendiente</span>
+</td>
+```
+
+**Status values:**
+- **Pendiente** - Awaiting review
+- **En progreso** - Being addressed
+- **Resuelto** - Completed
+
+### Severity Levels
+
+```html Severity Indicator
+<td>
+  <span aria-label="Gravedad moderada">Moderado</span>
+</td>
+```
+
+<Warning>
+Critical reports ("Crítico") receive priority visibility and may trigger notifications to neighborhood administrators.
+</Warning>
+
+## Report Tables
+
+Category pages display reports in accessible tables:
+
+```html Infrastructure Report Table
+<table>
+  <caption class="muted">
+    Listado de casos de infraestructura y convivencia reportados por la comunidad
+  </caption>
+  
+  <thead>
+    <tr>
+      <th scope="col">Evidencia</th>
+      <th scope="col">Fecha de reporte</th>
+      <th scope="col">Nombre del caso</th>
+      <th scope="col">Gravedad del caso</th>
+      <th scope="col">Estado del caso</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <td>
+        <a href="#" aria-label="Ver adjunto del caso Deterioro vial">
+          Adjunto
+        </a>
+      </td>
+      <td>
+        <time datetime="2026-01-05">Enero 5, 2026</time>
+      </td>
+      <td>Deterioro vial</td>
+      <td>
+        <span aria-label="Gravedad moderada">Moderado</span>
+      </td>
+      <td>
+        <span aria-label="Estado pendiente">Pendiente</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Search and Filter
+
+The sanitation page demonstrates advanced filtering:
+
+```html Search and Sort
+<!-- BUSCADOR -->
+<form role="search" aria-label="Buscar reportes">
+  <label for="buscar-reporte" class="visually-hidden">
+    Ultimos reportes
+  </label>
+  
+  <input
+    type="search"
+    id="buscar-reporte"
+    name="q"
+    placeholder="Buscar reporte"
+    aria-describedby="ayuda-busqueda"
+  />
+  
+  <span id="ayuda-busqueda" class="visually-hidden">
+    Puedes buscar por dirección o tipo de reporte
+  </span>
+</form>
+
+<!-- ORDENAR -->
+<div class="ordenar">
+  <select id="ordenar-reportes" name="orden">
+    <option value="recientes">Más recientes</option>
+    <option value="antiguos">Más antiguos</option>
+    <option value="zona">Zona</option>
+    <option value="estado">Estado</option>
+  </select>
+</div>
+```
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Writing Effective Reports">
+    - Use clear, specific titles
+    - Include exact location details
+    - Provide context and impact
+    - Attach photos when possible
+    - Update status as situations change
+  </Accordion>
+  
+  <Accordion title="Choosing Report Types">
+    - Select the most specific category
+    - Use Infrastructure for physical damage
+    - Use Sanitation for cleanliness issues
+    - Use Security for safety concerns
+    - Use Public Services for utility failures
+  </Accordion>
+  
+  <Accordion title="Anonymity Considerations">
+    - Anonymous reports still create visibility
+    - Identified reports enable follow-up
+    - Consider community impact vs privacy
+    - JAC members can view all submission details
+  </Accordion>
+</AccordionGroup>
+
+## Related Features
+
+<CardGroup cols={2}>
+  <Card title="Neighborhood Dashboard" icon="gauge" href="/features/neighborhood-dashboard">
+    View report summaries and key metrics
+  </Card>
+  <Card title="Events & Activities" icon="calendar" href="/features/events-activities">
+    Participate in community events
+  </Card>
+</CardGroup>

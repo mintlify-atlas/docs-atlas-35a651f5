@@ -1,0 +1,413 @@
+---
+title: "Events & Activities"
+description: "Browse and participate in neighborhood events and community activities on UniJAC"
+---
+
+## Overview
+
+UniJAC's Events & Activities feature helps residents stay informed about community gatherings, activities, and organized events. From fitness classes to vaccination drives, discover everything happening in your neighborhood.
+
+## Browsing Events
+
+### Navigation Access
+
+Events are accessible from multiple locations in the interface:
+
+<CodeGroup>
+```html Main Dashboard Button
+<button class="btn-action">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="none" stroke="currentColor" stroke-linecap="round" 
+          stroke-linejoin="round" stroke-width="1.5" 
+          d="M16 2v4M8 2v4m5-2h-2C7.229 4 5.343 4 4.172 5.172S3 8.229 3 12v2c0 3.771 0 5.657 1.172 6.828S7.229 22 11 22h2c3.771 0 5.657 0 6.828-1.172S21 17.771 21 14v-2c0-3.771 0-5.657-1.172-6.828S16.771 4 13 4M3 10h18"/>
+  </svg>
+  <span>Eventos</span>
+</button>
+```
+
+```html Header Navigation
+<nav aria-label="Navegación principal">
+  <ul>
+    <li><a href="./eventsandactivities.html">Eventos y actividades</a></li>
+  </ul>
+</nav>
+```
+</CodeGroup>
+
+### Events List Page
+
+The dedicated events page (`eventsandactivities.html`) displays all upcoming activities:
+
+```html Events Page Structure
+<main>
+  <nav aria-label="Ruta de navegación">
+    <ol class="breadcrumb">
+      <li><a href="../index.html">Página principal</a></li>
+      <li><a href="./neighborhoods.html">Barrio</a></li>
+      <li aria-current="page">Eventos y actividades</li>
+    </ol>
+  </nav>
+  
+  <h1>Eventos y actividades comunitarias</h1>
+  
+  <div class="grid">
+    <section aria-labelledby="lista-eventos">
+      <div class="events">
+        <!-- Event cards appear here -->
+      </div>
+    </section>
+  </div>
+</main>
+```
+
+## Event Details
+
+Each event card displays comprehensive information:
+
+### Event Card Structure
+
+<CodeGroup>
+```html Complete Event Card
+<article class="card">
+  <header>
+    <p class="muted">
+      <time datetime="2026-02-14">Sábado, 14 febrero</time> · 
+      <time datetime="2026-02-14T07:00">7:00 AM</time>
+    </p>
+    <h3 id="evento-rumba">Invitación Rumba Terapia</h3>
+  </header>
+  
+  <p class="muted">
+    Evento de Alcaldía de Bogotá<br />
+    Parque principal Minuto de Dios
+  </p>
+  
+  <p>
+    Te invitamos a participar de este maravilloso espacio de autocuidado,
+    enfocado en mejorar la salud del cuerpo y la mente a través del ejercicio.
+  </p>
+  
+  <button type="button" aria-disabled="true">
+    Asistiré
+  </button>
+</article>
+```
+
+```html Dashboard Preview
+<section class="info-events" aria-labelledby="eventos">
+  <h3 id="eventos">Eventos y actividades disponibles</h3>
+  <article class="card">
+    <h4>Rumba terapia</h4>
+    <p>Alcaldía del barrio</p>
+    <p>
+      <time datetime="2026-03-14T07:00">14/03/2026 – 7:00 AM</time>
+    </p>
+  </article>
+  <a href="#">Ver más</a>
+</section>
+```
+</CodeGroup>
+
+### Information Displayed
+
+Each event includes:
+
+<CardGroup cols={2}>
+  <Card title="Date & Time" icon="clock">
+    - Full date (day of week + date)
+    - Start time
+    - Duration (when applicable)
+    - Uses semantic `<time>` elements
+  </Card>
+  
+  <Card title="Location" icon="map-pin">
+    - Venue name
+    - Address or landmark
+    - Neighborhood reference
+    - Map integration (planned)
+  </Card>
+  
+  <Card title="Organizer" icon="users">
+    - Organization name
+    - JAC (Junta de Acción Comunal)
+    - Local government
+    - Community groups
+  </Card>
+  
+  <Card title="Description" icon="file-text">
+    - Event purpose
+    - Target audience
+    - Requirements
+    - Additional details
+  </Card>
+</CardGroup>
+
+## Event Types
+
+The platform showcases diverse community activities:
+
+### Fitness & Wellness
+
+<Tabs>
+  <Tab title="Rumba Terapia">
+    Exercise-based community health program:
+    
+    ```html
+    <h3>Invitación Rumba Terapia</h3>
+    <p>
+      Te invitamos a participar de este maravilloso espacio de autocuidado,
+      enfocado en mejorar la salud del cuerpo y la mente a través del ejercicio.
+    </p>
+    ```
+    
+    - **Organizer:** Alcaldía de Bogotá
+    - **Location:** Parque principal Minuto de Dios
+    - **Typical Schedule:** Early morning (7:00 AM)
+  </Tab>
+  
+  <Tab title="Other Activities">
+    Additional wellness events shown in homepage collage:
+    
+    - Swimming lessons (`grid4.avif`)
+    - Marathon events (`grid5.avif`)
+    - Dance activities (`grid6.avif`)
+    - Youth programs (`grid3.avif`)
+  </Tab>
+</Tabs>
+
+### Public Services
+
+```html Vaccination Example
+<img
+  class="grid8"
+  data-src="./assets/img/index-section3/grid8.avif"
+  alt="vacunacion"
+  width="400"
+  height="400"
+/>
+```
+
+- Vaccination campaigns
+- Health screenings
+- Public information sessions
+
+### Community Building
+
+<Info>
+Events foster neighborhood connections and civic engagement through various activities.
+</Info>
+
+- Environmental cleanup (`grid2.avif` - "recoger basura")
+- Tree planting (`grid1.avif` - "planta")
+- Public speeches and town halls (`grid7.avif` - "discurso")
+
+## Participating in Events
+
+### RSVP System
+
+Events feature an attendance confirmation button:
+
+```html RSVP Button
+<button type="button" aria-disabled="true">
+  Asistiré
+</button>
+```
+
+<Steps>
+  <Step title="Browse Events">
+    Navigate to the Events & Activities page or view previews on the dashboard
+  </Step>
+  
+  <Step title="Review Details">
+    Check date, time, location, and organizer information
+  </Step>
+  
+  <Step title="Confirm Attendance">
+    Click the "Asistiré" (I will attend) button to register
+  </Step>
+  
+  <Step title="Receive Updates">
+    Get notifications about event changes or cancellations
+  </Step>
+</Steps>
+
+<Warning>
+The RSVP functionality requires user authentication. Make sure you're logged in before attempting to confirm attendance.
+</Warning>
+
+### Dashboard Integration
+
+Upcoming events appear in the sidebar of all category pages:
+
+```html Sidebar Widget
+<section aria-labelledby="eventos">
+  <h2 id="eventos">Eventos y actividades disponibles</h2>
+  
+  <article class="card">
+    <h3>Rumba terapia</h3>
+    <p>Alcaldía del barrio</p>
+    <p>
+      <time datetime="2026-03-14T07:00">14/03/2026 – 7:00 AM</time>
+    </p>
+  </article>
+  
+  <a href="#">Ver más</a>
+</section>
+```
+
+This ensures event visibility across:
+- Infrastructure reports page
+- Sanitation page
+- Security page
+- All other category pages
+
+## Event Discovery
+
+### Homepage Section
+
+The main landing page prominently features events:
+
+```html Index Page Section
+<section class="third-content" aria-labelledby="titulo-reportes">
+  <div class="text-content">
+    <h3 class="title" id="titulo-reportes">
+      Asiste en todos los eventos!
+    </h3>
+    
+    <p class="subtitle">
+      No te pierdas de los eventos que se organizan en tu barrio.
+    </p>
+  </div>
+  <div class="collage-content">
+    <article class="grid-content">
+      <!-- 8 event images in grid layout -->
+    </article>
+  </div>
+</section>
+```
+
+### Visual Grid
+
+The homepage showcases event types through an 8-image collage:
+
+<CardGroup cols={4}>
+  <Card title="Planting" icon="seedling">
+    Environmental activities
+  </Card>
+  <Card title="Cleanup" icon="broom">
+    Community service
+  </Card>
+  <Card title="Youth" icon="child">
+    Children's programs
+  </Card>
+  <Card title="Swimming" icon="swimmer">
+    Recreational sports
+  </Card>
+  <Card title="Running" icon="person-running">
+    Fitness events
+  </Card>
+  <Card title="Dance" icon="music">
+    Cultural activities
+  </Card>
+  <Card title="Speeches" icon="microphone">
+    Civic engagement
+  </Card>
+  <Card title="Health" icon="syringe">
+    Public health services
+  </Card>
+</CardGroup>
+
+## Accessibility Features
+
+Events are designed with accessibility in mind:
+
+<AccordionGroup>
+  <Accordion title="Semantic HTML">
+    ```html
+    <time datetime="2026-02-14T07:00">14/03/2026 – 7:00 AM</time>
+    ```
+    
+    - Proper `<time>` elements with datetime attributes
+    - Semantic article and header elements
+    - ARIA labels for screen readers
+  </Accordion>
+  
+  <Accordion title="Navigation">
+    ```html
+    <nav aria-label="Ruta de navegación">
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Página principal</a></li>
+        <li><a href="./neighborhoods.html">Barrio</a></li>
+        <li aria-current="page">Eventos y actividades</li>
+      </ol>
+    </nav>
+    ```
+    
+    - Clear breadcrumb navigation
+    - Proper ARIA landmarks
+    - Keyboard accessible controls
+  </Accordion>
+  
+  <Accordion title="Content Structure">
+    - Descriptive headings hierarchy
+    - Labeled sections with `aria-labelledby`
+    - Alternative text for event images
+    - Button states clearly indicated
+  </Accordion>
+</AccordionGroup>
+
+## Integration Points
+
+### Dashboard Summary
+
+The neighborhood dashboard shows event count:
+
+```html
+<article class="card">
+  <p>Eventos</p>
+  <span class="badge">4</span>
+</article>
+```
+
+### Novedades Category
+
+Events are part of the broader "Novedades" (News) category:
+
+```html Index Feature
+<h4 class="title">Novedades</h4>
+<p class="info">
+  Ahora podrás saber sobre noticias, eventos y actividades que se
+  realizan en tu zona.
+</p>
+```
+
+## Best Practices
+
+<Tip>
+**For Event Organizers:**
+- Post events at least 1 week in advance
+- Include clear location and time details
+- Provide contact information for questions
+- Update event status if changes occur
+- Add relevant images to increase engagement
+</Tip>
+
+<Tip>
+**For Participants:**
+- RSVP early to help organizers plan
+- Check event details 24 hours before
+- Arrive on time to the specified location
+- Share events with neighbors who might be interested
+- Provide feedback after attending
+</Tip>
+
+## Related Features
+
+<CardGroup cols={2}>
+  <Card title="Neighborhood Dashboard" icon="gauge" href="/features/neighborhood-dashboard">
+    View all neighborhood information in one place
+  </Card>
+  <Card title="Community Reports" icon="flag" href="/features/community-reports">
+    Report issues and share information
+  </Card>
+</CardGroup>

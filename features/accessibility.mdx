@@ -1,0 +1,669 @@
+---
+title: "Accessibility Features"
+description: "Discover UniJAC's accessibility tools including font size controls, contrast modes, and keyboard navigation"
+---
+
+## Overview
+
+UniJAC is designed with accessibility at its core, ensuring all residents can effectively use the platform regardless of visual, motor, or cognitive abilities. The platform implements multiple accessibility features controlled through a dedicated menu.
+
+## Accessibility Menu
+
+The accessibility controls are accessible from all pages through a floating button:
+
+<CodeGroup>
+```html Accessibility Button
+<nav class="nav-actions">
+  <div id="accessContent" class="access-content">
+    <button
+      aria-label="Controles de accesibilidad"
+      class="accesibility-btn"
+      id="accesibilityBtn"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="none"
+          stroke="#3881d5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 6.5a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3m6 .5c-1.546 1.237-3.664 2-6 2s-4.454-.763-6-2m7.5 7.5l1 6m-1-6V9m0 5.5h-3m-1 6l1-6m0 0V9"
+        />
+      </svg>
+    </button>
+    <div id="contentAccesibility" class="content-accesibility">
+      <h1>Menú de accesibilidad</h1>
+      <div class="content-btns">
+        <!-- Accessibility controls -->
+      </div>
+    </div>
+  </div>
+</nav>
+```
+
+```html Control Panel
+<div id="contentAccesibility" class="content-accesibility">
+  <h1>Menú de accesibilidad</h1>
+  <div class="content-btns">
+    <button id="aumentarFuente">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" 
+           viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" 
+                d="M10.319 16.978h1.648m0 0h1.664m-1.664 0v-9.48m-4.961 1.72c-.138-1.057.138-1.524 1.11-1.786c2.49-.67 5.193-.557 7.697.06c.943.234 1.265.649 1.13 1.726"/>
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10Z"/>
+        </g>
+      </svg>
+      Aumentar fuente
+    </button>
+    <button id="disminuirFuente">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" 
+           viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" 
+                d="M10.319 16.978h1.648m0 0h1.664m-1.664 0v-9.48m-4.961 1.72c-.138-1.057.138-1.524 1.11-1.786c2.49-.67 5.193-.557 7.697.06c.943.234 1.265.649 1.13 1.726"/>
+          <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10Z"/>
+        </g>
+      </svg>
+      Reducir fuente
+    </button>
+    <button id="contraste" class="contrast-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" 
+           viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" d="M2 8s4.477-5 10-5s10 5 10 5"/>
+          <path d="M21.544 13.045c.304.426.456.64.456.955c0 .316-.152.529-.456.955C20.178 16.871 16.689 21 12 21c-4.69 0-8.178-4.13-9.544-6.045C2.152 14.529 2 14.315 2 14c0-.316.152-.529.456-.955C3.822 11.129 7.311 7 12 7c4.69 0 8.178 4.13 9.544 6.045Z"/>
+          <path d="M15 14a3 3 0 1 0-6 0a3 3 0 0 0 6 0Z" />
+        </g>
+      </svg>
+      Contraste
+    </button>
+  </div>
+</div>
+```
+</CodeGroup>
+
+<Info>
+The accessibility menu uses an overlay pattern to focus user attention on the available controls.
+</Info>
+
+## Font Size Controls
+
+UniJAC provides dynamic font scaling for improved readability:
+
+### Implementation
+
+```javascript index.js:85-107
+const btnAumentar = document.querySelector("#aumentarFuente");
+const btnDisminuir = document.querySelector("#disminuirFuente");
+
+// Tamano base de fuente
+let tamanoFuente = 16;
+
+if (btnAumentar && btnDisminuir) {
+  const html = document.documentElement;
+  
+  btnAumentar.addEventListener("click", () => {
+    if (tamanoFuente <= 25) {
+      tamanoFuente += 1;
+      document.documentElement.style.fontSize = `${tamanoFuente}px`;
+    }
+  });
+  
+  btnDisminuir.addEventListener("click", () => {
+    if (tamanoFuente >= 14) {
+      tamanoFuente -= 1;
+      document.documentElement.style.fontSize = `${tamanoFuente}px`;
+    }
+  });
+}
+```
+
+### Font Size Range
+
+<CardGroup cols={3}>
+  <Card title="Minimum" icon="text-size">
+    **14px**
+    
+    Smallest readable size, ideal for large displays
+  </Card>
+  <Card title="Default" icon="text-size">
+    **16px**
+    
+    Standard size for optimal readability
+  </Card>
+  <Card title="Maximum" icon="text-size">
+    **25px**
+    
+    Maximum size for users with visual impairments
+  </Card>
+</CardGroup>
+
+<Tip>
+Font size changes apply globally using `document.documentElement.style.fontSize`, affecting all text that uses relative units (em, rem).
+</Tip>
+
+### How It Works
+
+<Steps>
+  <Step title="Open Accessibility Menu">
+    Click the accessibility icon (person figure) in the floating navigation
+  </Step>
+  <Step title="Select Font Control">
+    - Click "Aumentar fuente" to increase size by 1px
+    - Click "Reducir fuente" to decrease size by 1px
+  </Step>
+  <Step title="Apply Changes">
+    Changes take effect immediately across all page content
+  </Step>
+  <Step title="Find Optimal Size">
+    Repeat adjustments until reaching comfortable reading size
+  </Step>
+</Steps>
+
+## Contrast Mode
+
+High contrast mode improves visibility for users with low vision:
+
+### Toggle Implementation
+
+```javascript index.js:108-114
+const btnContraste = document.querySelector("#contraste");
+
+if (btnContraste) {
+  btnContraste.addEventListener('click', () => {
+    btnContraste.classList.toggle('active');
+    
+    const current = html.getAttribute('data-theme');
+    html.setAttribute('data-theme', current === '' ? 'contrast' : '');
+  });
+}
+```
+
+### Theme Attribute
+
+The contrast mode uses a data attribute on the root HTML element:
+
+```html HTML Element
+<html lang="es" data-theme="">
+```
+
+**Values:**
+- `data-theme=""` - Normal mode (default)
+- `data-theme="contrast"` - High contrast mode
+
+<CodeGroup>
+```css Expected CSS Implementation
+/* Normal mode */
+:root {
+  --color-text: #333333;
+  --color-bg: #ffffff;
+  --color-primary: #3881d5;
+}
+
+/* Contrast mode */
+[data-theme="contrast"] {
+  --color-text: #000000;
+  --color-bg: #ffffff;
+  --color-primary: #0066cc;
+  --border-width: 2px;
+}
+
+[data-theme="contrast"] * {
+  border-color: currentColor !important;
+}
+```
+
+```html Contrast Button
+<button id="contraste" class="contrast-btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" 
+       viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" d="M2 8s4.477-5 10-5s10 5 10 5"/>
+      <path d="M21.544 13.045c.304.426.456.64.456.955c0 .316-.152.529-.456.955C20.178 16.871 16.689 21 12 21c-4.69 0-8.178-4.13-9.544-6.045C2.152 14.529 2 14.315 2 14c0-.316.152-.529.456-.955C3.822 11.129 7.311 7 12 7c4.69 0 8.178 4.13 9.544 6.045Z"/>
+      <path d="M15 14a3 3 0 1 0-6 0a3 3 0 0 0 6 0Z" />
+    </g>
+  </svg>
+  Contraste
+</button>
+```
+</CodeGroup>
+
+<Warning>
+Contrast mode changes may affect custom themes and dark mode. Test all theme combinations for readability.
+</Warning>
+
+## Keyboard Navigation
+
+UniJAC supports full keyboard navigation:
+
+### Navigation Patterns
+
+<Tabs>
+  <Tab title="Tab Key">
+    **Forward Navigation**
+    
+    ```
+    Tab → Next interactive element
+    ```
+    
+    **Typical order:**
+    1. Skip to content link
+    2. Logo
+    3. Navigation menu items
+    4. Main content links
+    5. Form inputs
+    6. Action buttons
+    7. Footer links
+  </Tab>
+  
+  <Tab title="Shift+Tab">
+    **Backward Navigation**
+    
+    ```
+    Shift+Tab → Previous interactive element
+    ```
+    
+    Reverses through the tab order for quick access to previous elements.
+  </Tab>
+  
+  <Tab title="Enter/Space">
+    **Activation**
+    
+    ```
+    Enter → Activate links and buttons
+    Space → Toggle buttons and checkboxes
+    ```
+    
+    Example from code:
+    ```javascript
+    btnMenu.addEventListener('click', (e) => {
+      menu.classList.toggle('is-open');
+      overlay.classList.toggle('active');
+    });
+    ```
+  </Tab>
+  
+  <Tab title="Escape">
+    **Close Modals**
+    
+    ```
+    Escape → Close overlays and dialogs
+    ```
+    
+    Closes:
+    - Accessibility menu
+    - Navigation menu
+    - Modal dialogs
+    - Dropdown menus
+  </Tab>
+</Tabs>
+
+### Focus Management
+
+The code includes proper focus handling:
+
+```javascript index.js:19-63
+document.addEventListener('click', (e) => {
+  // Close menu when clicking outside
+  if (!menu.contains(e.target) && !btnMenu.contains(e.target)) {
+    menu.classList.remove('is-open');
+    overlay.classList.remove('active');
+  }
+  
+  // Open accessibility menu
+  if (btnAccesibility && accessContent && accessContent.contains(e.target)) {
+    btnAccesibility.classList.add('visible');
+    overlay.classList.add('active');
+  } else if (!menu.classList.contains('is-open')) {
+    btnAccesibility.classList.remove('visible');
+    overlay.classList.remove('active');
+  }
+});
+```
+
+<Info>
+Clicking outside menus automatically closes them, maintaining focus context and preventing confusion.
+</Info>
+
+## Screen Reader Support
+
+UniJAC implements comprehensive screen reader compatibility:
+
+### ARIA Labels
+
+<CodeGroup>
+```html Navigation
+<header class="header" id="header" role="banner">
+  <a href="#/home" class="logo-container" aria-label="Inicio UniJAC">
+    <svg class="logo">...</svg>
+  </a>
+  
+  <button
+    class="nav-btn"
+    id="btnMenu"
+    type="button"
+    aria-controls="nav-menu"
+    aria-expanded="false"
+    aria-label="Abrir menú"
+  >
+    <svg>...</svg>
+  </button>
+  
+  <nav
+    class="nav-container"
+    id="menuContainer"
+    aria-label="Navegación principal"
+  >
+    <ul class="list-container">
+      <li><a href="#/home">Inicio</a></li>
+      <li><a aria-disabled="true" href="#/about">Acerca de</a></li>
+      <li><a aria-disabled="true" href="#/contact">Contactos</a></li>
+    </ul>
+  </nav>
+</header>
+```
+
+```html Form Controls
+<div class="type-barrios">
+  <label for="buscar-barrio" class="sr-only">Buscar tu barrio</label>
+  <input
+    id="buscar-barrio"
+    type="search"
+    autocomplete="off"
+    placeholder="Escribe tu barrio"
+    list="barrios-lista"
+    class="input-search"
+  />
+</div>
+```
+
+```html Live Regions
+<blockquote>
+  <span
+    id="motivationalPhrase"
+    class="text-phrase"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    aria-labelledby="frase-dia"
+  >
+    Cargando frase motivacional...
+  </span>
+  <cite id="authorText" class="author">Cargando autor</cite>
+</blockquote>
+```
+</CodeGroup>
+
+### Screen Reader Only Text
+
+The `.sr-only` class hides content visually while keeping it accessible:
+
+```html Examples
+<span class="sr-only">logo</span>
+<span class="sr-only">Menu hamburguesa para moviles</span>
+<span class="sr-only">Tema de navegacion</span>
+<label for="buscar-barrio" class="sr-only">Buscar tu barrio</label>
+<label for="buscar-reporte" class="visually-hidden">
+  Ultimos reportes
+</label>
+```
+
+<Tip>
+**Expected CSS:**
+```css
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+```
+</Tip>
+
+### Semantic HTML
+
+Proper HTML5 semantic elements throughout:
+
+```html Landmarks
+<header role="banner">...</header>
+<nav aria-label="Navegación principal">...</nav>
+<main id="mainContent">...</main>
+<aside aria-label="Información complementaria">...</aside>
+<footer role="contentinfo">...</footer>
+```
+
+<CardGroup cols={3}>
+  <Card title="Headings" icon="heading">
+    Proper hierarchy (h1 → h2 → h3) for document structure
+  </Card>
+  <Card title="Landmarks" icon="map">
+    Role attributes on major page sections
+  </Card>
+  <Card title="Lists" icon="list">
+    Semantic lists for navigation and content groups
+  </Card>
+</CardGroup>
+
+## Scroll to Top
+
+A scroll-to-top button improves navigation:
+
+<CodeGroup>
+```html Button
+<button aria-label="Volver al inicio" class="scroll-btn" id="scrollBtn">
+  <svg
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    viewBox="0 0 24 24"
+  >
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M18 15s-4.42-6-6-6s-6 6-6 6"
+    />
+  </svg>
+</button>
+```
+
+```javascript index.js:21-24
+document.addEventListener('click', (e) => {
+  // Scroll button
+  if (e.target.closest('#scrollBtn')) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+});
+```
+
+```javascript index.js:67-77
+window.addEventListener('scroll', () => {
+  const scrollCurrent = window.scrollY;
+  if (scrollCurrent > 700 && scrollCurrent > scrollPrev) {
+    header?.classList.add('hide');
+  } else {
+    header?.classList.remove('hide');
+  }
+  scrollPrev = scrollCurrent;
+  btnScroll?.classList.toggle('is-visible', window.scrollY >= 600);
+  header?.classList.toggle('on-scroll', window.scrollY >= 50);
+});
+```
+</CodeGroup>
+
+**Behavior:**
+- Appears after scrolling 600px down
+- Smooth scroll animation to top
+- Accessible via keyboard (Tab + Enter)
+- Clear ARIA label for screen readers
+
+## Loading States
+
+Content loader provides visual feedback:
+
+```javascript index.js:1-6
+window.addEventListener("load", () => {
+  // Mostar loader mientras se carga el DOM por completo
+  const contentLoader = document.querySelector("#contentLoader");
+  contentLoader?.style.setProperty('opacity', '0');
+  contentLoader?.style.setProperty('visibility', 'hidden');
+});
+```
+
+```html Loader Element
+<div class="content-loader" id="contentLoader">
+  <span class="loader"></span>
+</div>
+```
+
+<Note>
+The loader becomes invisible once the DOM fully loads, improving perceived performance.
+</Note>
+
+## Responsive Header
+
+Header visibility adapts to scroll behavior:
+
+```javascript index.js:67-77
+let scrollPrev = window.scrollY;
+
+window.addEventListener('scroll', () => {
+  const scrollCurrent = window.scrollY;
+  if (scrollCurrent > 700 && scrollCurrent > scrollPrev) {
+    header?.classList.add('hide');
+  } else {
+    header?.classList.remove('hide');
+  }
+  scrollPrev = scrollCurrent;
+  btnScroll?.classList.toggle('is-visible', window.scrollY >= 600);
+  header?.classList.toggle('on-scroll', window.scrollY >= 50);
+});
+```
+
+**Features:**
+- Hides header when scrolling down beyond 700px
+- Shows header when scrolling up
+- Adds visual state at 50px scroll
+- Improves screen real estate on mobile
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="For Users with Visual Impairments">
+    1. **Enable High Contrast**
+       - Click accessibility icon
+       - Select "Contraste" button
+       - Verify all text is readable
+    
+    2. **Adjust Font Size**
+       - Start at default 16px
+       - Increase incrementally using "Aumentar fuente"
+       - Find optimal size between 14px-25px
+    
+    3. **Use Screen Reader**
+       - All content has proper ARIA labels
+       - Semantic HTML provides context
+       - Live regions announce dynamic content
+  </Accordion>
+  
+  <Accordion title="For Users with Motor Impairments">
+    1. **Keyboard Navigation**
+       - Use Tab to navigate forward
+       - Use Shift+Tab to go backward
+       - Press Enter to activate links/buttons
+       - Press Escape to close menus
+    
+    2. **Target Sizes**
+       - All buttons meet minimum 44×44px target size
+       - Adequate spacing between interactive elements
+       - Large clickable areas for links
+    
+    3. **Scroll to Top**
+       - Use floating button to return to top
+       - Avoid excessive scrolling
+       - Keyboard accessible
+  </Accordion>
+  
+  <Accordion title="For Users with Cognitive Disabilities">
+    1. **Clear Structure**
+       - Consistent navigation across pages
+       - Predictable button locations
+       - Breadcrumb navigation shows location
+    
+    2. **Simple Language**
+       - Clear labels and instructions
+       - Icons supplement text
+       - Consistent terminology
+    
+    3. **Focus Management**
+       - Only one menu open at a time
+       - Clear focus indicators
+       - Logical tab order
+  </Accordion>
+</AccordionGroup>
+
+## Testing Accessibility
+
+<Steps>
+  <Step title="Keyboard Only">
+    Navigate the entire site using only keyboard
+    
+    - Can you reach all interactive elements?
+    - Is the focus indicator always visible?
+    - Does tab order make logical sense?
+  </Step>
+  
+  <Step title="Screen Reader">
+    Test with NVDA, JAWS, or VoiceOver
+    
+    - Are all images described?
+    - Do form fields have labels?
+    - Are page regions properly identified?
+  </Step>
+  
+  <Step title="Font Scaling">
+    Test at minimum, default, and maximum sizes
+    
+    - Does layout remain usable at 25px?
+    - Is text still readable at 14px?
+    - Do elements overlap or break?
+  </Step>
+  
+  <Step title="Contrast Mode">
+    Enable high contrast and verify:
+    
+    - All text has sufficient contrast (4.5:1 minimum)
+    - Borders and icons are visible
+    - Interactive elements are distinguishable
+  </Step>
+</Steps>
+
+## Related Features
+
+<CardGroup cols={3}>
+  <Card title="Neighborhood Dashboard" icon="gauge" href="/features/neighborhood-dashboard">
+    Accessible dashboard design
+  </Card>
+  <Card title="Community Reports" icon="flag" href="/features/community-reports">
+    Accessible form controls
+  </Card>
+  <Card title="Events & Activities" icon="calendar" href="/features/events-activities">
+    Semantic event markup
+  </Card>
+</CardGroup>

@@ -1,0 +1,384 @@
+---
+title: "Participating in Community Events"
+description: "Discover and RSVP to neighborhood events and activities on UniJAC"
+---
+
+UniJAC helps you stay connected with community events, from city-sponsored activities to neighborhood gatherings. This guide shows you how to find events, view details, and confirm your attendance.
+
+## Accessing Community Events
+
+<Steps>
+  <Step title="Via Dashboard Navigation">
+    From the main dashboard, access events through:
+    
+    **Left sidebar navigation:**
+    - Click the **Eventos** (Events) button with the calendar icon
+    
+    **Top navigation menu:**
+    - Select **"Eventos y actividades"** from the header navigation
+    
+    Both options take you to the events listing page.
+  </Step>
+
+  <Step title="Via Breadcrumb Navigation">
+    The breadcrumb trail shows:
+    
+    ```
+    Página principal > Barrio > Eventos y actividades
+    ```
+    
+    This confirms you're viewing events specific to your neighborhood.
+  </Step>
+
+  <Step title="From the Dashboard Sidebar">
+    The dashboard includes a **"Eventos y actividades disponibles"** (Available events and activities) section in the right sidebar.
+    
+    This widget shows upcoming events at a glance:
+    
+    ```
+    📅 Eventos y actividades disponibles
+    
+    Rumba terapia
+    Alcaldía del barrio
+    14/03/2026 – 7:00 AM
+    
+    [Ver más]
+    ```
+    
+    Click **"Ver más"** (See more) to view all events.
+  </Step>
+</Steps>
+
+## Event Listing Page
+
+The **"Eventos y actividades comunitarias"** (Community events and activities) page displays all upcoming events in a card-based layout.
+
+### Event Card Structure
+
+Each event is presented in a card format with the following information:
+
+```html
+┌─────────────────────────────────────────┐
+│ Sábado, 14 febrero · 7:00 AM            │
+│ Invitación Rumba Terapia                │
+│                                         │
+│ Evento de Alcaldía de Bogotá            │
+│ Parque principal Minuto de Dios         │
+│                                         │
+│ Te invitamos a participar de este       │
+│ maravilloso espacio de autocuidado...   │
+│                                         │
+│ [Asistiré]                              │
+└─────────────────────────────────────────┘
+```
+
+### Event Details Included
+
+| Field | Description | Example |
+|-------|-------------|----------|
+| **Date** | Day of the week and date | "Sábado, 14 febrero" |
+| **Time** | Start time in 24-hour format | "7:00 AM" |
+| **Title** | Event name | "Invitación Rumba Terapia" |
+| **Organizer** | Who's hosting | "Evento de Alcaldía de Bogotá" |
+| **Location** | Venue or meeting place | "Parque principal Minuto de Dios" |
+| **Description** | Details about the activity | Full event description |
+| **RSVP Button** | Confirmation action | "Asistiré" (I will attend) |
+
+## Understanding Event Information
+
+### Date and Time Format
+
+Events use semantic HTML `<time>` elements with datetime attributes:
+
+```html
+<time datetime="2026-02-14">Sábado, 14 febrero</time> · 
+<time datetime="2026-02-14T07:00">7:00 AM</time>
+```
+
+This ensures:
+- Screen readers announce dates correctly
+- Browser extensions can add to calendar
+- Consistent date formatting across devices
+
+### Event Organizers
+
+Common organizers include:
+
+- **Alcaldía de Bogotá** - Bogotá city government
+- **Alcaldía del barrio** - Neighborhood local office
+- **JAC** (Junta de Acción Comunal) - Community action board
+- **Community groups** - Resident-organized activities
+- **Cultural organizations** - Arts and culture institutions
+
+### Location Information
+
+Event locations are typically:
+
+- **Public parks**: "Parque principal Minuto de Dios"
+- **Community centers**: "Salón comunal"
+- **Public squares**: "Plaza del barrio"
+- **Sports facilities**: "Cancha del barrio"
+- **Virtual**: For online events
+
+## RSVP Process
+
+<Steps>
+  <Step title="Review Event Details">
+    Before confirming attendance:
+    
+    - Check the **date and time** - Ensure you're available
+    - Read the **full description** - Understand what the event involves
+    - Note the **location** - Confirm you can get there
+    - Identify the **organizer** - Recognize who's hosting
+  </Step>
+
+  <Step title="Click the RSVP Button">
+    Each event card includes an **"Asistiré"** (I will attend) button.
+    
+    ```html
+    <button type="button" aria-disabled="true">
+      Asistiré
+    </button>
+    ```
+    
+    <Note>
+      In the current implementation, some buttons may show `aria-disabled="true"` during development or when RSVP is full.
+    </Note>
+    
+    Click the button to register your attendance.
+  </Step>
+
+  <Step title="Confirmation">
+    After clicking "Asistiré":
+    
+    - The button may change appearance (color, text, or icon)
+    - You might see a confirmation message
+    - The event is added to your personal calendar/agenda
+    - You may receive a confirmation email
+  </Step>
+
+  <Step title="Calendar Integration">
+    Depending on implementation, you might be able to:
+    
+    - Download an `.ics` file for your calendar app
+    - Sync with Google Calendar, Outlook, or Apple Calendar
+    - Receive reminders before the event
+    - See your RSVPs in your profile
+  </Step>
+</Steps>
+
+## Event Types
+
+UniJAC features various community activities:
+
+<AccordionGroup>
+  <Accordion title="Health and Wellness">
+    **Examples:**
+    - **Rumba Terapia** - Dance therapy/exercise sessions
+    - **Aerobics classes** - Group fitness
+    - **Health screenings** - Free medical checkups
+    - **Mental health workshops** - Wellness seminars
+    
+    These events focus on community health and self-care.
+  </Accordion>
+
+  <Accordion title="Cultural Activities">
+    **Examples:**
+    - **Festivals** - Neighborhood celebrations
+    - **Art exhibitions** - Local artist showcases
+    - **Music concerts** - Live performances
+    - **Theater** - Community plays and performances
+    
+    Cultural events celebrate local heritage and creativity.
+  </Accordion>
+
+  <Accordion title="Community Meetings">
+    **Examples:**
+    - **JAC assemblies** - Community board meetings
+    - **Town halls** - Discussions with local officials
+    - **Planning sessions** - Neighborhood improvement planning
+    - **Information sessions** - Updates on local projects
+    
+    These gatherings involve community decision-making.
+  </Accordion>
+
+  <Accordion title="Sports and Recreation">
+    **Examples:**
+    - **Soccer tournaments** - Neighborhood leagues
+    - **Fun runs** - Community races
+    - **Sports days** - Multi-sport events for families
+    - **Cycling events** - Group rides
+    
+    Sports events promote fitness and friendly competition.
+  </Accordion>
+
+  <Accordion title="Educational Programs">
+    **Examples:**
+    - **Workshops** - Skill-building sessions
+    - **Training courses** - Job skills or certifications
+    - **Tutoring programs** - Academic support
+    - **Digital literacy** - Technology classes
+    
+    Educational events provide learning opportunities.
+  </Accordion>
+
+  <Accordion title="Environmental Initiatives">
+    **Examples:**
+    - **Clean-up days** - Neighborhood beautification
+    - **Tree planting** - Urban greening
+    - **Recycling drives** - Waste reduction campaigns
+    - **Gardens** - Community gardening projects
+    
+    Environmental events improve neighborhood spaces.
+  </Accordion>
+</AccordionGroup>
+
+## Finding Relevant Events
+
+### Dashboard Event Summary
+
+The main dashboard shows an event count in the summary section:
+
+```
+Resumen de reportes
+┌─────────────┐
+│ Eventos   4 │
+│ Daños     6 │
+│ Extravíos 2 │
+│ Aseo     11 │
+└─────────────┘
+```
+
+The number indicates how many upcoming events are scheduled for your neighborhood.
+
+### Sidebar Event Preview
+
+The right sidebar displays a quick preview:
+
+- **Event name**: Brief title
+- **Organizer**: Who's hosting
+- **Date and time**: When it's happening
+
+This preview helps you quickly see what's coming up without navigating away from the dashboard.
+
+### "Ver más" Links
+
+Multiple sections include **"Ver más"** (See more) links that:
+
+- Take you to the full events page
+- Show all upcoming activities
+- Provide complete event details
+- Allow you to RSVP
+
+## Managing Your Event Participation
+
+### Viewing Your RSVPs
+
+Track events you've confirmed:
+
+- Access your user profile or account settings
+- Look for "Mis eventos" (My events) or "Eventos confirmados" (Confirmed events)
+- See a list of upcoming events you plan to attend
+
+### Canceling an RSVP
+
+If you can no longer attend:
+
+1. Navigate to the event details page
+2. Look for a "Cancelar asistencia" (Cancel attendance) option
+3. Confirm the cancellation
+4. The spot may become available for others
+
+<Tip>
+  Cancel as early as possible, especially for events with limited capacity, so others can attend.
+</Tip>
+
+### Event Reminders
+
+You may receive notifications:
+
+- **Email reminders**: Day before and morning of the event
+- **In-app notifications**: If using a mobile app
+- **Calendar alerts**: If synced with your calendar app
+
+## Event Capacity and Availability
+
+### Limited Capacity Events
+
+Some events have maximum attendance:
+
+- RSVP buttons become disabled when full
+- "Sold out" or "Cupos llenos" (Full) indicator appears
+- Waitlist options may be available
+
+### Placeholder Events
+
+The events page may show placeholders:
+
+```html
+<article class="card" aria-hidden="true">
+  <p class="muted">Evento próximamente…</p>
+  <button disabled>Asistiré</button>
+</article>
+```
+
+These indicate:
+- More events will be added soon
+- The space is reserved for upcoming announcements
+- Check back regularly for updates
+
+## Accessibility Features
+
+Event pages include:
+
+- **Semantic HTML**: Proper `<article>` and `<header>` elements
+- **ARIA labels**: Descriptive labels for screen readers
+- **DateTime attributes**: Machine-readable date/time information
+- **Keyboard navigation**: All buttons and links accessible via keyboard
+- **Focus management**: Clear visual indicators for focused elements
+
+## Important Schedules
+
+The sidebar also displays recurring schedules:
+
+### Garbage Collection Schedule
+
+```
+📅 Horarios importantes
+
+Recolección de basura
+• Lunes
+• Miércoles  
+• Jueves
+
+Hora aproximada: 8:00 – 9:00 PM
+```
+
+This information helps you:
+- Know when to put out trash
+- Plan around collection times
+- Avoid violations for incorrect disposal times
+
+### Other Schedules
+
+Depending on your neighborhood, you might see:
+
+- Market days
+- Street cleaning schedules
+- Public service hours
+- Security patrol times
+
+## Sharing Events
+
+Spread the word about community events:
+
+- Copy the event URL to share via messaging apps
+- Post to neighborhood WhatsApp or Facebook groups
+- Email event details to neighbors
+- Print event cards for community bulletin boards
+
+## Next Steps
+
+- [Navigate your dashboard](/guide/dashboard-navigation) to explore other community features
+- [Report neighborhood issues](/guide/reporting-issues) you encounter
+- Check the **Noticias y novedades** (News and updates) section for announcements

@@ -1,0 +1,378 @@
+---
+title: Accessing UniJAC
+description: How to access and use the UniJAC platform on any device
+---
+
+UniJAC is a web-based platform that requires no installation. You can access it directly from any modern web browser on your desktop, laptop, tablet, or mobile device.
+
+## Platform access
+
+### Production URL
+
+Access UniJAC at the official deployment:
+
+<Card title="UniJAC Platform" icon="globe" href="https://unijac.vercel.app/">
+  https://unijac.vercel.app/
+</Card>
+
+The platform is deployed on Vercel, providing fast, reliable access from anywhere in Bogotá and beyond.
+
+### Direct navigation
+
+Bookmark these direct links for quick access to specific sections:
+
+<CodeGroup>
+```text Home page
+https://unijac.vercel.app/#/home
+```
+
+```text Registration
+https://unijac.vercel.app/#/register
+```
+
+```text Login
+https://unijac.vercel.app/#/login
+```
+
+```text About
+https://unijac.vercel.app/#/about
+```
+
+```text Contact
+https://unijac.vercel.app/#/contact
+```
+</CodeGroup>
+
+## Browser requirements
+
+UniJAC works best with modern web browsers that support HTML5, CSS3, and modern JavaScript features.
+
+### Recommended browsers
+
+<CardGroup cols={2}>
+  <Card title="Google Chrome" icon="chrome">
+    Version 90 or later (recommended)
+  </Card>
+  
+  <Card title="Mozilla Firefox" icon="firefox">
+    Version 88 or later
+  </Card>
+  
+  <Card title="Safari" icon="safari">
+    Version 14 or later (macOS and iOS)
+  </Card>
+  
+  <Card title="Microsoft Edge" icon="edge">
+    Version 90 or later
+  </Card>
+</CardGroup>
+
+### Browser features required
+
+The platform uses these modern web technologies:
+
+- **ES6+ JavaScript**: For hash-based routing and dynamic content loading
+- **Fetch API**: For loading pages and external data (motivational quotes)
+- **CSS Grid and Flexbox**: For responsive layouts
+- **HTML5 semantic elements**: For accessibility and structure
+- **localStorage**: For storing user preferences (theme, font size)
+
+```javascript
+// Example: Hash-based routing implementation
+async function loadView(path) {
+  const res = await fetch(path);
+  const html = await res.text();
+  if (main) main.innerHTML = html;
+}
+
+// Route handling
+window.addEventListener("hashchange", hashRoutes);
+```
+
+<Info>
+  If you're using an older browser, consider updating to the latest version for the best experience.
+</Info>
+
+## No installation needed
+
+UniJAC is a single-page application (SPA) that runs entirely in your browser. This means:
+
+<AccordionGroup>
+  <Accordion title="No downloads or installations">
+    Simply open your browser and navigate to the URL. There's no software to download, install, or maintain.
+  </Accordion>
+  
+  <Accordion title="Automatic updates">
+    When you visit UniJAC, you always get the latest version. Updates are deployed seamlessly without any action required from you.
+  </Accordion>
+  
+  <Accordion title="Cross-platform compatibility">
+    Access UniJAC from Windows, macOS, Linux, iOS, or Android. Any device with a modern browser works perfectly.
+  </Accordion>
+  
+  <Accordion title="No disk space required">
+    Since there's nothing to install, UniJAC doesn't take up space on your device. All resources are loaded from the web.
+  </Accordion>
+</AccordionGroup>
+
+## Mobile access
+
+UniJAC features a responsive design that adapts to mobile devices automatically.
+
+### Mobile experience
+
+**Responsive navigation**
+
+On mobile devices, the platform uses a hamburger menu for navigation:
+
+```html
+<button
+  class="nav-btn"
+  id="btnMenu"
+  type="button"
+  aria-controls="nav-menu"
+  aria-expanded="false"
+  aria-label="Abrir menú"
+>
+  <!-- Menu icon -->
+</button>
+```
+
+**Touch-optimized interface**
+
+All buttons and interactive elements are sized appropriately for touch input, ensuring easy navigation on smartphones and tablets.
+
+**Mobile viewport configuration**
+
+The platform includes proper viewport settings for mobile devices:
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+### Add to home screen (PWA-like experience)
+
+While UniJAC is not currently a full Progressive Web App, you can still add it to your mobile home screen for quick access:
+
+<Steps>
+  <Step title="iOS (Safari)">
+    1. Open UniJAC in Safari
+    2. Tap the Share button (square with arrow)
+    3. Scroll down and tap "Add to Home Screen"
+    4. Name it "UniJAC" and tap "Add"
+  </Step>
+  
+  <Step title="Android (Chrome)">
+    1. Open UniJAC in Chrome
+    2. Tap the menu (three dots)
+    3. Tap "Add to Home screen"
+    4. Name it "UniJAC" and tap "Add"
+  </Step>
+</Steps>
+
+This creates a shortcut icon on your home screen for one-tap access to the platform.
+
+## Offline considerations
+
+<Warning>
+  UniJAC requires an active internet connection to function. The platform loads content dynamically and requires connectivity for:
+  - Loading page content via hash routing
+  - Fetching motivational phrases from the API
+  - Viewing and submitting community reports
+  - Accessing event information
+</Warning>
+
+Make sure you have a stable internet connection when using UniJAC.
+
+## System architecture
+
+Understanding how UniJAC is structured can help you make the most of the platform:
+
+### Single-page application
+
+UniJAC uses a single `index.html` file with hash-based routing to create a multi-page experience:
+
+```javascript
+// Main content container
+const main = document.querySelector("#mainContent");
+
+// Hash route handler
+async function hashRoutes() {
+  const route = location.hash || "#/home";
+  
+  switch (route) {
+    case "#/home":
+      if (main) main.innerHTML = homeHTML;
+      initHome();
+      break;
+    case "#/register":
+      await loadView("pages/register.html");
+      break;
+    // ... other routes
+  }
+}
+```
+
+### File structure
+
+The platform is organized into:
+
+```text Project structure
+📦 UniJAC
+ ┣ 📂 assets
+ ┃ ┣ 📂 img          # Images and icons
+ ┃ ┗ 📂 videos       # Video content
+ ┣ 📂 css
+ ┃ ┣ 📜 globals.css        # Global styles
+ ┃ ┣ 📜 index.css          # Home page styles
+ ┃ ┗ 📜 neighborhoods.css  # Dashboard styles
+ ┣ 📂 js
+ ┃ ┣ 📜 index.js           # Home page logic
+ ┃ ┣ 📜 neighborhoods.js   # Dashboard logic
+ ┃ ┗ 📜 routes.js          # Routing system
+ ┣ 📂 pages
+ ┃ ┣ 📜 register.html      # Registration form
+ ┃ ┣ 📜 login.html         # Login page
+ ┃ ┣ 📜 neighborhoods.html # Neighborhood dashboard
+ ┃ ┗ 📜 ... (other pages)
+ ┗ 📜 index.html           # Main application file
+```
+
+### Performance optimization
+
+UniJAC implements several performance optimizations:
+
+**Lazy loading images**
+
+```javascript
+const images = document.querySelectorAll('[data-src]');
+const options = { rootMargin: "200px" };
+
+const observer = new IntersectionObserver((entries, self) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.src = entry.target.getAttribute("data-src");
+      self.unobserve(entry.target);
+    }
+  });
+}, options);
+
+images.forEach((image) => observer.observe(image));
+```
+
+**Preloaded assets**
+
+```html
+<link
+  rel="preload"
+  href="./css/index.css"
+  as="style"
+  onload="this.onload = null; this.rel = 'stylesheet';"
+/>
+
+<link
+  rel="preload"
+  href="/assets/fonts/InterVariable.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+  font-display="swap"
+/>
+```
+
+## Accessibility features
+
+UniJAC is designed with accessibility in mind and works with:
+
+- **Screen readers**: All interactive elements have proper ARIA labels
+- **Keyboard navigation**: Full keyboard support for all features
+- **Adjustable text**: Built-in font size controls
+- **High contrast mode**: Toggle for better visibility
+- **Semantic HTML**: Proper heading hierarchy and landmarks
+
+Access the accessibility menu by clicking the accessibility button (♿) in the bottom right corner.
+
+<Tip>
+  For the best experience on mobile devices, use landscape orientation when viewing detailed reports or the neighborhood dashboard.
+</Tip>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Page not loading">
+    1. Check your internet connection
+    2. Refresh the page (Ctrl+R or Cmd+R)
+    3. Clear your browser cache
+    4. Try a different browser
+  </Accordion>
+  
+  <Accordion title="Images not appearing">
+    Images use lazy loading. Scroll down the page to trigger image loading, or wait a moment for the Intersection Observer to activate.
+  </Accordion>
+  
+  <Accordion title="Navigation not working">
+    UniJAC uses hash-based routing. Make sure:
+    - JavaScript is enabled in your browser
+    - You're not blocking scripts
+    - Your browser supports modern JavaScript (ES6+)
+  </Accordion>
+  
+  <Accordion title="Modal won't close">
+    If the welcome modal or other overlays won't close:
+    1. Try clicking the overlay background
+    2. Press the Escape key
+    3. Refresh the page if needed
+  </Accordion>
+</AccordionGroup>
+
+## Developer setup (optional)
+
+If you're a developer wanting to run UniJAC locally:
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/alexander10pb/UniJac.git
+    cd UniJac
+    ```
+  </Step>
+  
+  <Step title="Install dependencies">
+    ```bash
+    npm install
+    ```
+  </Step>
+  
+  <Step title="Run locally">
+    Since UniJAC is a static site, you can use any local server:
+    
+    ```bash
+    # Using Python
+    python -m http.server 8000
+    
+    # Using Node.js http-server
+    npx http-server
+    
+    # Using VS Code Live Server extension
+    # Right-click index.html > Open with Live Server
+    ```
+  </Step>
+</Steps>
+
+<Note>
+  Local development is only needed if you're contributing to the platform or customizing it for your organization. Regular users should access the production URL directly.
+</Note>
+
+## Next steps
+
+Now that you know how to access UniJAC, get started:
+
+<CardGroup cols={2}>
+  <Card title="Create an account" icon="user-plus" href="/quickstart">
+    Follow the quickstart guide to set up your account
+  </Card>
+  
+  <Card title="Learn the features" icon="book" href="/features/community-reports">
+    Explore everything UniJAC has to offer
+  </Card>
+</CardGroup>

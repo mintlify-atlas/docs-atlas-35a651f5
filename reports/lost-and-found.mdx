@@ -1,0 +1,326 @@
+---
+title: Lost and Found Reports
+description: Report lost items, found objects, missing pets, and help reunite neighbors with their belongings
+icon: magnifying-glass
+---
+
+## What Can You Report in Lost and Found?
+
+The lost and found category, labeled "Desorientación y objetos" in UniJAC, helps community members recover lost items and return found objects to their owners. You can report:
+
+- **Documentos** (Documents) - ID cards, passports, licenses, certificates
+- **Llaves** (Keys) - House keys, car keys, office keys
+- **Dispositivos electrónicos** (Electronic devices) - Phones, tablets, laptops
+- **Objetos personales** (Personal items) - Wallets, bags, jewelry, clothing
+- **Mascotas** (Pets) - Lost or found dogs, cats, and other animals
+- **Artículos de valor** (Valuables) - Money, important documents, sentimental items
+
+<Info>
+This category facilitates community assistance in reuniting people with their belongings, strengthening neighborhood bonds through helping each other.
+</Info>
+
+## Lost vs. Found: Two Types of Reports
+
+### Reporting Lost Items
+
+When you've lost something:
+
+1. **Detailed description** - Color, brand, distinctive features
+2. **Where lost** - Last known location or area
+3. **When lost** - Date and approximate time
+4. **Contact information** - How finders can reach you
+5. **Reward** (optional) - If offering a reward for return
+
+### Reporting Found Items
+
+When you've found something:
+
+1. **Item description** - What you found (avoid excessive details to verify ownership)
+2. **Where found** - Location where item was discovered
+3. **When found** - Date and time
+4. **Safe keeping location** - Where the item is being held
+5. **Verification questions** - Ask claimants to describe specific details
+
+<Tip>
+For found items, don't include all identifying details in your public post. Ask claimants to describe specific features to verify ownership.
+</Tip>
+
+## Real Case Example: Found Documents
+
+Here's an actual lost and found report from UniJAC:
+
+<Card title="Documentos Extraviados - Recovered" icon="file-circle-check">
+  **Reporter:** Juanito Pérez (Integrante de la JAC)  
+  **Item:** Documentos extraviados  
+  **Status:** ✓ Recuperado (Recovered)
+  
+  **Report:**  
+  "Buenas tardes vecinos, el día de ayer se encontraron estos documentos en el parque principal del barrio. Se dejarán en la estación más cercana de TransMilenio."
+  
+  **Date:** Reportado el 12 de enero de 2025
+</Card>
+
+This successful recovery shows how community members help each other and work with public facilities like TransMilenio stations as drop-off points.
+
+## Lost and Found Report Structure
+
+The system displays reports in an organized card format:
+
+```html Report Card Structure
+<article class="card">
+  <header>
+    <div class="user">
+      <span>👤</span>
+      <strong>Reporter Name</strong>
+    </div>
+    <p>JAC Member status</p>
+    <span class="tag">Status: Recuperado/Pendiente</span>
+  </header>
+  
+  <h3>Item Title</h3>
+  <p>Description and details</p>
+  <p>Date reported</p>
+  <a href="#">Ver más →</a>
+</article>
+```
+
+## How to Submit a Lost and Found Report
+
+<Steps>
+  <Step title="Choose report type">
+    Select whether you're reporting a LOST item (you're looking for) or FOUND item (you discovered)
+  </Step>
+  <Step title="Provide item details">
+    Describe the item with enough detail for identification
+  </Step>
+  <Step title="Specify location">
+    Include where the item was lost or found - be specific about landmarks
+  </Step>
+  <Step title="Add photos if available">
+    For found items, photos help owners identify their belongings
+  </Step>
+  <Step title="Set contact method">
+    Choose how people should reach you (UniJAC message, phone, email)
+  </Step>
+  <Step title="Post and monitor">
+    Publish your report and check regularly for responses
+  </Step>
+</Steps>
+
+## Status Tags for Lost and Found
+
+Reports use visual tags to show current status:
+
+<CardGroup cols={3}>
+  <Card title="Recuperado" icon="circle-check" color="#68D391">
+    Item successfully returned to owner
+  </Card>
+  <Card title="Pendiente" icon="clock" color="#F6AD55">
+    Still looking for owner or item
+  </Card>
+  <Card title="Cerrado" icon="circle-xmark" color="#A0AEC0">
+    Report closed (no longer relevant)
+  </Card>
+</CardGroup>
+
+## Found Item Safety Locations
+
+Common safe places to hold found items:
+
+- **JAC office** - Community action office
+- **TransMilenio stations** - As shown in the example report
+- **Local police station** (CAI) - For valuable items
+- **Neighborhood businesses** - Trusted local shops
+- **Religious centers** - Churches or community centers
+- **Schools** - For items found near educational institutions
+
+<Warning>
+**For valuable items or documents:** Consider taking them directly to a police station (CAI) to ensure proper handling and create an official record.
+</Warning>
+
+## Special Case: Lost Pets
+
+Pet reports require additional information:
+
+### Lost Pet Report
+
+```javascript Example Lost Pet Report
+{
+  "category": "Desorientación y objetos",
+  "subcategory": "Mascota perdida",
+  "petType": "Perro",
+  "breed": "Labrador mestizo",
+  "color": "Café claro",
+  "name": "Max",
+  "age": "5 años",
+  "lastSeen": {
+    "date": "2026-03-03",
+    "location": "Parque cerca a Calle 79 con Carrera 13"
+  },
+  "distinguishingFeatures": "Collar azul, mancha blanca en pecho",
+  "microchip": "Sí",
+  "contact": "WhatsApp: [number]",
+  "reward": "Se ofrece recompensa"
+}
+```
+
+### Found Pet Report
+
+- Current location where pet is being kept
+- Description without identifying name
+- Contact information for verification
+- Photo if possible
+
+<Tip>
+For lost pets, post to UniJAC immediately and also contact local veterinarians and animal shelters. Check with neighbors who might have seen your pet.
+</Tip>
+
+## Understanding "Desorientación"
+
+The Spanish term "desorientación" (disorientation) captures the broader concept:
+
+- Items that are "disoriented" (lost) from their owners
+- People who may be disoriented (lost persons, elderly wandering)
+- Objects out of place that need to be reunited with owners
+
+This holistic approach emphasizes community care and looking out for each other.
+
+## What Happens After You Report?
+
+### For Lost Items
+
+1. **Report posts** to community feed
+2. **Neighbors see it** and check if they've seen or found the item
+3. **Responses come in** from potential finders
+4. **Verification** through specific questions about the item
+5. **Reunion arranged** between owner and finder
+6. **Status updated** to "Recuperado" when returned
+
+### For Found Items
+
+1. **Report posts** with general description
+2. **Potential owners respond** with detailed descriptions
+3. **Verification questions** confirm true ownership
+4. **Meeting arranged** at safe location (JAC office, police station)
+5. **Item returned** to rightful owner
+6. **Report marked** as "Recuperado"
+
+## Best Practices for Lost Item Reports
+
+### Do:
+- Report as soon as possible while item might still be nearby
+- Provide clear, detailed descriptions
+- Include photos if you have them (especially for pets)
+- Check back frequently for responses
+- Update your report with new information
+- Thank finders publicly to encourage community participation
+
+### Don't:
+- Include extremely valuable items' full details publicly (contact police)
+- Give personal address in initial report
+- Meet unknown people in isolated locations
+- Claim items without being able to verify ownership
+
+## Best Practices for Found Item Reports
+
+### Do:
+- Report found items promptly
+- Keep items secure and safe
+- Ask verification questions before returning
+- Use public or official locations for returns
+- Take photos for your records
+- Mark report as resolved once returned
+
+### Don't:
+- Include every identifying detail (save some for verification)
+- Keep valuable items at home for extended periods
+- Return items without proper verification
+- Expect rewards (but graciously accept if offered)
+
+## Document Handling
+
+Special considerations for found documents:
+
+<Card title="Best Practices for Found Documents" icon="id-card">
+  **Identification Documents:**
+  - Take to nearest police station (CAI) or TransMilenio station
+  - Don't post photos showing full ID numbers or addresses
+  - Report that documents were found and where they're being held
+  
+  **Official Documents:**
+  - Contact issuing institution if possible
+  - Hold securely until claimed
+  - Require proper identification before returning
+</Card>
+
+## Privacy and Safety
+
+<Warning>
+**Privacy Considerations:**
+- Don't post personal addresses publicly
+- Use UniJAC messaging for detailed communication
+- Meet in public places (JAC office, police station, busy cafes)
+- For valuable items, require identification verification
+- Keep records of returns (photos, witnesses)
+</Warning>
+
+## Success Stories Build Community
+
+Every successful lost and found return:
+
+<CardGroup cols={2}>
+  <Card title="Builds Trust" icon="handshake">
+    Neighbors learn they can rely on each other
+  </Card>
+  <Card title="Encourages Participation" icon="users">
+    Success stories motivate others to help
+  </Card>
+  <Card title="Strengthens Bonds" icon="heart">
+    Gratitude and goodwill strengthen community connections
+  </Card>
+  <Card title="Creates Safety" icon="shield">
+    Active community reduces opportunities for theft
+  </Card>
+</CardGroup>
+
+## Integration with Other Features
+
+Lost and found connects with other UniJAC categories:
+
+- **Security reports** - Distinguish between lost items and theft
+- **Community events** - Organize "lost and found" days
+- **Neighborhood info** - Identify safe drop-off locations
+
+## Beyond Objects: Community Care
+
+The "desorientación" category can extend to:
+
+- **Lost children** - Helping kids find parents (always involve authorities)
+- **Elderly persons** - Assisting disoriented seniors return home
+- **Tourists** - Helping visitors who are lost
+- **Emergency situations** - Coordinating help for those in need
+
+<Note>
+For any situation involving vulnerable persons (children, elderly, disabled), immediately contact authorities (Policía 123) while also posting to UniJAC for community awareness.
+</Note>
+
+## Tips for Increasing Success
+
+1. **Post quickly** - The sooner you report, the better the chances
+2. **Be descriptive** - Include unique features and distinctive marks
+3. **Use multiple channels** - Post on UniJAC and also check with neighbors
+4. **Check regularly** - Monitor your report for responses
+5. **Share widely** - Ask neighbors to share your report
+6. **Follow up** - Update your report with outcome
+
+## The Power of Community Helping
+
+<Info>
+The lost and found category exemplifies UniJAC's mission: neighbors helping neighbors, building stronger communities through everyday acts of kindness and mutual support.
+</Info>
+
+Every item returned, every pet reunited, every document recovered strengthens the fabric of your neighborhood community.
+
+<Note>
+Remember to always mark your report as "Recuperado" when successful, and consider sharing a thank-you message to encourage others to participate in community care.
+</Note>
