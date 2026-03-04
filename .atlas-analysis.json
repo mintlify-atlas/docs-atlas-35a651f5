@@ -1,0 +1,103 @@
+{
+  "projectType": "saas",
+  "projectName": "UniJAC",
+  "projectDescription": "Community management platform strengthening communication and participation among Bogotá neighborhoods",
+  "theme": "almond",
+  "primaryColor": "#040404",
+  "lightColor": null,
+  "darkColor": null,
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "installation"
+            ]
+          },
+          {
+            "group": "Core Features",
+            "pages": [
+              "features/community-reports",
+              "features/events-activities",
+              "features/neighborhood-dashboard",
+              "features/accessibility"
+            ]
+          },
+          {
+            "group": "User Guide",
+            "pages": [
+              "guide/registration",
+              "guide/reporting-issues",
+              "guide/participating-events",
+              "guide/dashboard-navigation"
+            ]
+          },
+          {
+            "group": "JAC Administration",
+            "pages": [
+              "admin/overview",
+              "admin/managing-reports",
+              "admin/organizing-events",
+              "admin/community-management"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Report Categories",
+        "groups": [
+          {
+            "group": "Report Types",
+            "pages": [
+              "reports/infrastructure",
+              "reports/sanitation",
+              "reports/security",
+              "reports/public-services",
+              "reports/lost-and-found"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Resources",
+        "groups": [
+          {
+            "group": "Additional Information",
+            "pages": [
+              "resources/ods-11",
+              "resources/faq",
+              "resources/contributing",
+              "resources/support"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Community issue reporting system (infrastructure, security, sanitation, public services)",
+    "Neighborhood events and activities management",
+    "Interactive neighborhood dashboard with real-time reports",
+    "User registration and authentication",
+    "JAC administrative tools for community management",
+    "Accessibility features (font sizing, contrast mode)",
+    "Location-based neighborhood selection",
+    "Schedule tracking (garbage collection, events)",
+    "Anonymous and identified reporting options"
+  ],
+  "publicApiSurface": [
+    "User registration flow (multi-step form)",
+    "Neighborhood dashboard interface",
+    "Community report submission forms",
+    "Event browsing and participation",
+    "JAC administrative panel",
+    "Accessibility controls API",
+    "Hash-based routing system",
+    "Motivational phrases API integration"
+  ]
+}
